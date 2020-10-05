@@ -6,3 +6,11 @@
 
 ## Overview
 
+The architecture is composed by four services:
+
+    * `micro-eureka-server`: Service Discovery Server created with Eureka
+    * `micro-api-getway`: API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as Load Balancer
+    * `micro-auth-service`: Simple REST service created with Spring Boot and spring cloud oauth2 to use as an **authorization service**
+    * `micro-product-service`: Simple REST service created with Spring Boot to use as an **resource service**
+    * `micro-sales-service`: Simple REST service created with Spring Boot to use as an **resource service**
+
