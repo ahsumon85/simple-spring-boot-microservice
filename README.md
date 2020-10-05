@@ -22,12 +22,12 @@ Eureka Server is an application that holds the information about all client-serv
 
 we need to add `@EnableEurekaServer` annotation. The `@EnableEurekaServer` annotation is used to make your Spring Boot application acts as a Eureka Server.
 
-`@SpringBootApplication
-@EnableEurekaServer
-public class EurekaServerApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(EurekaServerApplication.class, args);
-    }
-}`
+`@SpringBootApplication`
+`@EnableEurekaServer`
+`public class EurekaServerApplication {`
+`    public static void main(String[] args) {`
+`        SpringApplication.run(EurekaServerApplication.class, args);`
+ `   }`
+`}`
 
 
