@@ -31,6 +31,30 @@ public class EurekaServerRunner {
 		System.out.println("Eureka Server Started....!!");
 	}
 }
+
+```
+Make sure Spring cloud Eureka server dependency is added in your build configuration file.
+The code for Maven user dependency is shown below −
+```
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+</dependency>
+```
+
+By default, the Eureka Server registers itself into the discovery. You should add the below given configuration into your `application.properties` file or `application.yml` file.
+
+```
+# Give a name to the eureka server
+spring.application.name=eureka-server
+
+# default port for eureka server
+server.port=8761
+
+# eureka by default will register itself as a client. So, we need to set it to false.
+# What's a client server? See other microservices (employee, user, etc).
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
 ```
 
 
