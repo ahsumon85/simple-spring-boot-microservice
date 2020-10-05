@@ -17,10 +17,13 @@ import javax.sql.DataSource;
 @Configuration
 public class AuthorizationServerConfiguration implements AuthorizationServerConfigurer {
 
+    
     @Autowired
     private PasswordEncoder passwordEncoder;
+    
     @Autowired
     private DataSource dataSource;
+    
     @Autowired
     private AuthenticationManager authenticationManager;
 
