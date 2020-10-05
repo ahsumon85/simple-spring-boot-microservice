@@ -3,7 +3,7 @@
 
 
 
-## Overview
+# Overview
 
 The architecture is composed by five services:
 
@@ -13,8 +13,8 @@ The architecture is composed by five services:
    * `micro-product-service`: Simple REST service created with `Spring Boot, Spring Cloud Oauth2, Spring Data JPA, MySQL` to use as an **resource service**
    * `micro-sales-service`: Simple REST service created with `Spring Boot, Spring Cloud Oauth2, Spring Data JPA, MySQL` to use as an **resource service**
  
-###
-### micro-eureka-service
+##
+## micro-eureka-service
 
 Eureka Server is an application that holds the information about all client-service applications. Every Micro service will register into the Eureka server and Eureka server knows all the client applications running on each port and IP address. Eureka Server is also known as Discovery Server.
 
@@ -57,7 +57,7 @@ eureka.client.register-with-eureka=false
 eureka.client.fetch-registry=false
 ```
 
-### How to run?
+## How to run?
 
 # Build Project
 Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
