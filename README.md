@@ -7,7 +7,7 @@
 
 The architecture is composed by five services:
 
-   * `micro-eureka-server`: Service Discovery Server created with Eureka
+   * `micro-eureka-server`: Service **Discovery Server** created with Eureka
    * `micro-api-getway`: API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as Load Balancer
    * `micro-auth-service`: Simple REST service created with `Spring Boot, Spring Cloud Oauth2, Spring Data JPA, MySQL` to use as an **authorization service**
    * `micro-product-service`: Simple REST service created with `Spring Boot, Spring Cloud Oauth2, Spring Data JPA, MySQL` to use as an **resource service**
@@ -31,8 +31,8 @@ public class EurekaServerRunner {
 		System.out.println("Eureka Server Started....!!");
 	}
 }
-
 ```
+
 Make sure Spring cloud Eureka server dependency is added in your build configuration file.
 The code for Maven user dependency is shown below −
 ```
@@ -57,4 +57,28 @@ eureka.client.register-with-eureka=false
 eureka.client.fetch-registry=false
 ```
 
+### How to run?
 
+# Build Project
+Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
+For Maven, use the command as shown below −
+
+`mvn clean install`
+or
+
+**Project import in sts4 IDE** 
+`File >import >maven >Existing maven project > Root Directory-Browse > Select project form root folder > Finish`
+
+# Run project 
+
+After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
+Now, run the JAR file by using the following command −
+
+ `java –jar <JARFILE> `
+
+ or
+ Run on sts IDE
+ 
+ `click right button on the project >Run As >Spring Boot App`
+ 
+ URL: http://localhost:8761
