@@ -3,7 +3,7 @@
 
 
 
-## Overview
+# Overview
 
 The architecture is composed by five services:
 
@@ -14,7 +14,7 @@ The architecture is composed by five services:
    * `micro-sales-service`: Simple REST service created with `Spring Boot, Spring Cloud Oauth2, Spring Data JPA, MySQL` to use as an **resource service**
  
 ##
-## micro-eureka-service
+# micro-eureka-service
 
 Eureka Server is an application that holds the information about all client-service applications. Every Micro service will register into the Eureka server and Eureka server knows all the client applications running on each port and IP address. Eureka Server is also known as Discovery Server.
 
@@ -67,7 +67,7 @@ For Maven, use the command as shown below −
 or
 
 **Project import in sts4 IDE** 
-`File >import >maven >Existing maven project > Root Directory-Browse > Select project form root folder > Finish`
+```File >import >maven >Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
 
 ### Run project 
 
