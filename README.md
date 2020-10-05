@@ -80,4 +80,4 @@ Now, run the JAR file by using the following command −
  
  `click right button on the project >Run As >Spring Boot App`
  
- URL: http://localhost:8761
+ Discovery-Service URL: http://localhost:8761
