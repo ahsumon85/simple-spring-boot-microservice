@@ -13,7 +13,7 @@ public class ProductApplicationRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProductApplicationRunner.class, args);
-		System.out.println("Employee service started....!");
+		System.out.println("Product service ruuning....!");
 	}
 
 }
