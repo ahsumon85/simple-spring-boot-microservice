@@ -81,3 +81,8 @@ Now, run the JAR file by using the following command −
  `click right button on the project >Run As >Spring Boot App`
  
  Discovery-Service URL: http://localhost:8761
+
+
+# micro-auth-service
+
+

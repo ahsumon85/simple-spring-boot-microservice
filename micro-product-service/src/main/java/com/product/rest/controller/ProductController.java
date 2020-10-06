@@ -32,29 +32,29 @@ public class ProductController {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@GetMapping(value = "/find", produces = "application/json")
+	@GetMapping(value = "/find")
 	public ResponseEntity<List<ProductDTO>> getAllProducts() {
 		List<ProductDTO> list = productService.findProductList();
 		return new ResponseEntity<List<ProductDTO>>(list, HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/find/by-id", produces = "application/json")
+	@GetMapping(value = "/find/by-id")
 	public ResponseEntity<ProductDTO> getProductById(@RequestParam Long id) {
-		ProductDTO list=new ProductDTO();
-		SalesDTO salesDTO =new SalesDTO();
+		ProductDTO list = new ProductDTO();
+		SalesDTO salesDTO = new SalesDTO();
 		try {
-			String url ="http://sales-server/sales-api/sales/find/name/by-id?id="+id+"&access_token=" + AccessTokenProvider.provideToken();
+			String url = "http://sales-server/sales-api/sales/find/name/by-id?id=" + id + "&access_token=" + AccessTokenProvider.provideToken();
 			ResponseEntity<SalesDTO> response = restTemplate.getForEntity(url, SalesDTO.class);
-			 salesDTO = response.getBody();
+			salesDTO = response.getBody();
 		} catch (Exception e) {
-		System.out.println(e);
+			System.out.println(e);
 		}
-		 list = productService.findByProductId(id);
-		 list.setSales(salesDTO.getPrice());
+		list = productService.findByProductId(id);
+		list.setSales(salesDTO.getPrice());
 		return new ResponseEntity<ProductDTO>(list, HttpStatus.OK);
 	}
 
-	@PostMapping(value = { "/add", "/update" }, consumes = "application/json")
+	@PostMapping(value = { "/add", "/update" })
 	public ResponseEntity<String> createOrUpdateProduct(@Valid @RequestBody ProductDTO productDTO) {
 		productService.createOrUpdateProduct(productDTO);
 		return new ResponseEntity<>("Data Insert sucessfully", HttpStatus.OK);
