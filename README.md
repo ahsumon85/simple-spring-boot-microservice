@@ -83,6 +83,6 @@ Now, run the JAR file by using the following command −
  Discovery-Service URL: http://localhost:8761
 
 
-# micro-auth-service
+
 
 
