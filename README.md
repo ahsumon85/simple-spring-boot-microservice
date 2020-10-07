@@ -95,5 +95,5 @@ In this Spring security oauth2 tutorial, learn to build an authorization server 
 ***Introduction to OAuth 2***
 OAuth 2 is an authorization method to provide access to protected resources over the HTTP protocol. Primarily, oauth2 enables a third-party application to obtain limited access to an HTTP service –
 
-	* either on behalf of a resource owner by orchestrating an approval interaction between the resource owner and the HTTP service
-	* or by allowing the third-party application to obtain access on its own behalf.
+* either on behalf of a resource owner by orchestrating an approval interaction between the resource owner and the HTTP service
+* or by allowing the third-party application to obtain access on its own behalf.
