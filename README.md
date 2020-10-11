@@ -197,3 +197,10 @@ create table if not exists role_user (
 * `oauth_client_details table` is used to store client details.
 * `oauth_access_token` and `oauth_refresh_token` is used internally by OAuth2 server to store the user tokens.
 
+***Create a client***
+
+Let’s insert a record in `oauth_client_details` table for a client named appclient with a password `appclient`.
+
+Here, `appclient` is the ID has access to the `product-server` and `sales-server` resource.
+
+I have used `CodeachesBCryptPasswordEncoder.java` available here to get the Bcrypt encrypted password.
