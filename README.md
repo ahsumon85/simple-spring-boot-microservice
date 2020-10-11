@@ -110,3 +110,18 @@ OAuth 2 is an authorization method to provide access to protected resources over
 
 * `Access Token`: Sent with each request, usually valid for about an hour only.
 * `Refresh Token`: It is used to get a 00new access token, not sent with each request, usually lives longer than access token.
+
+
+### Quick Start a Cloud Security App
+
+Let's start by configuring SSO in a Spring Boot application.
+
+First, we need to add the `spring-cloud-starter-oauth2` dependency:
+```
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-oauth2</artifactId>
+    <version>2.2.2.RELEASE</version>
+</dependency>
+```
+This will also bring in the `spring-cloud-starter-security`dependency.
