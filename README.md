@@ -243,3 +243,16 @@ INSERT INTO ROLE_USER (ROLE_ID, USER_ID)
     (2, 2), /* ahasan-editor */ ,
     (3, 3); /* user-operatorr */ ;
 ```
+### Enable OAuth2 mechanism
+
+Annotate the `Oauth2AuthorizationServerApplication.java` with `@EnableAuthorizationServer`. This enables the Spring to consider this service as authorization Server.
+```
+@EnableAuthorizationServer
+@SpringBootApplication
+public class Oauth2AuthorizationServerApplication {
+
+  public static void main(String[] args) {
+    SpringApplication.run(Oauth2AuthorizationServerApplication.class, args);
+  }
+}
+```
