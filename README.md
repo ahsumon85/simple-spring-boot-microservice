@@ -114,7 +114,7 @@ OAuth 2 is an authorization method to provide access to protected resources over
 
 ### Quick Start a Cloud Security App
 
-Let's start by configuring SSO in a Spring Boot application.
+Let's start by configuring spring cloud oauth2 in a Spring Boot application for microservice security.
 
 First, we need to add the `spring-cloud-starter-oauth2` dependency:
 ```
