@@ -266,3 +266,43 @@ Let’s create a class `AuthServerConfig.java` with below details.
 * **AuthorizationServerEndpointsConfigurer** configures the non-security features of the Authorization Server endpoints, like token store, token customizations, user approvals and grant types.
 * **AuthorizationServerSecurityConfigurer** configures the security of the Authorization Server, which means in practical terms the /oauth/token endpoint.
 * **ClientDetailsServiceConfigurer** configures the ClientDetailsService, e.g. declaring individual clients and their properties.
+
+```
+@Configuration
+public class AuthorizationServerConfiguration implements AuthorizationServerConfigurer {
+
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    
+    @Autowired
+    private DataSource dataSource;
+    
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+
+    @Bean
+    TokenStore jdbcTokenStore() {
+        return new JdbcTokenStore(dataSource);
+    }
+
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        security.checkTokenAccess("isAuthenticated()").tokenKeyAccess("permitAll()");
+
+    }
+
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.jdbc(dataSource).passwordEncoder(passwordEncoder);
+
+    }
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints.tokenStore(jdbcTokenStore());
+        endpoints.authenticationManager(authenticationManager);
+    }
+}
+```
