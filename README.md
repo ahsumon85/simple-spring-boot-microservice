@@ -194,4 +194,6 @@ create table if not exists role_user (
   constraint role_user_ibfk_2 foreign key (user_id) references user (id)
 );
 ```
+* `oauth_client_details table` is used to store client details.
+* `oauth_access_token` and `oauth_refresh_token` is used internally by OAuth2 server to store the user tokens.
 
