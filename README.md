@@ -173,7 +173,6 @@ create table if not exists  user (
   unique key username (username)
 ) ;
 
-
 create table  if not exists permission_role (
   permission_id int(11) default null,
   role_id int(11) default null,
@@ -182,8 +181,6 @@ create table  if not exists permission_role (
   constraint permission_role_ibfk_1 foreign key (permission_id) references permission (id),
   constraint permission_role_ibfk_2 foreign key (role_id) references role (id)
 );
-
-
 
 create table if not exists role_user (
   role_id int(11) default null,
@@ -204,3 +201,5 @@ Let’s insert a record in `oauth_client_details` table for a client named appcl
 Here, `appclient` is the ID has access to the `product-server` and `sales-server` resource.
 
 I have used `CodeachesBCryptPasswordEncoder.java` available [here](https://github.com/habibsumoncse/spring-boot-microservice-auth-zuul-eureka-hystrix/blob/master/micro-auth-service/src/main/resources/schema.sql) to get the Bcrypt encrypted password.
+
+`src/main/resources/data.sql`
