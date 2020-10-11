@@ -203,4 +203,4 @@ Let’s insert a record in `oauth_client_details` table for a client named appcl
 
 Here, `appclient` is the ID has access to the `product-server` and `sales-server` resource.
 
-I have used `CodeachesBCryptPasswordEncoder.java` available here to get the Bcrypt encrypted password.
+I have used `CodeachesBCryptPasswordEncoder.java` available [here](https://github.com/habibsumoncse/spring-boot-microservice-auth-zuul-eureka-hystrix/blob/master/micro-auth-service/src/main/resources/schema.sql) to get the Bcrypt encrypted password.
