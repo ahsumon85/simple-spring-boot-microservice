@@ -373,3 +373,21 @@ Now, add the Request Parameters as follows −
 ```
 ### Configure Product Server as a resource server
 Click on Generate Project. This downloads a zip file containing `micro-product-service` project. Import the project to your IDE.
+
+***Enable Resource Server mechanism***
+
+The first step is to annotate the `ProductApplicationRunner` with `@EnableResourceServer`. This enables the Spring to authenticate requests via an incoming OAuth2 token.
+
+```
+@SpringBootApplication
+@EnableEurekaClient
+@EnableResourceServer
+public class ProductApplicationRunner {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ProductApplicationRunner.class, args);
+		System.out.println("Product service ruuning....!");
+	}
+
+}
+```
