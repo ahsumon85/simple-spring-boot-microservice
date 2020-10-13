@@ -376,7 +376,7 @@ Click on Generate Project. This downloads a zip file containing `micro-product-s
 
 ***Enable Resource Server mechanism***
 
-The first step is to annotate the `ProductApplicationRunner` with `@EnableResourceServer`. This enables the Spring to authenticate requests via an incoming OAuth2 token and configure and registration with eureka server as a client using `@EnableEurekaClient`
+The first step is to annotate the `ProductApplicationRunner` with `@EnableResourceServer`. This enables the Spring to authenticate requests via an incoming OAuth2 token. configure and registration with eureka server as a client server using `@EnableEurekaClient`
 
 ```
 @SpringBootApplication
