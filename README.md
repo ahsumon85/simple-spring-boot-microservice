@@ -335,3 +335,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 }
 ```
+
+*** Test Authorization Service ***
+
