@@ -340,3 +340,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 ***Get Access Token***
 
 Let’s get the access token for `admin` by passing his credentials as part of header along with authorization details of appclient by sending `client_id` `client_pass` `username` `userpsssword`
+
+Now hit the POST method URL via POSTMAN to get the OAUTH2 token.
+
+***http://localhost:8080/oauth/token***
+
+Now, add the Request Headers as follows −
+
+*`Authorization` − Basic Auth with your Client Id and Client secret.
+
+*`Content Type` − application/x-www-form-urlencoded
