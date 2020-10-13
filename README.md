@@ -371,7 +371,7 @@ Now, add the Request Parameters as follows −
   "scope":"read write"
 }
 ```
-### Configure Product Server as a resource server
+## Configure Product Server as a resource server
 Click on Generate Project. This downloads a zip file containing `micro-product-service` project. Import the project to your IDE.
 
 ***Enable Resource Server mechanism***
@@ -391,3 +391,5 @@ public class ProductApplicationRunner {
 
 }
 ```
+
+###Configure Car Inventory Service with OAuth2 Service URI and Client Credentials
