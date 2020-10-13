@@ -350,3 +350,12 @@ Now, add the Request Headers as follows −
 *`Authorization` − Basic Auth with your Client Id and Client secret.
 
 *`Content Type` − application/x-www-form-urlencoded
+![1](https://user-images.githubusercontent.com/31319842/95816138-2e40d180-0d40-11eb-99c7-403cdf7ef070.png)
+
+Now, add the Request Parameters as follows −
+
+*`grant_type` = password
+*`username` = your username
+*`password` = your password
+![2](https://user-images.githubusercontent.com/31319842/95816163-3bf65700-0d40-11eb-9c87-7b721e0a268f.png)
+
