@@ -361,7 +361,7 @@ Now, add the Request Parameters as follows −
 *`password` = your password
 ![2](https://user-images.githubusercontent.com/31319842/95816163-3bf65700-0d40-11eb-9c87-7b721e0a268f.png)
 
-***HTTP POST Response**
+**HTTP POST Response**
 ```
 { 
   "access_token":"000ff762-414c-4605-858a-0ed7bee6f68e",
