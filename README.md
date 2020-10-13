@@ -336,7 +336,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ```
 
-***Test Authorization Service***
+### Test Authorization Service
 ***Get Access Token***
 
 Let’s get the access token for `admin` by passing his credentials as part of header along with authorization details of appclient by sending `client_id` `client_pass` `username` `userpsssword`
