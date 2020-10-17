@@ -392,4 +392,4 @@ public class ProductApplicationRunner {
 }
 ```
 
-###Configure Car Inventory Service with OAuth2 Service URI and Client Credentials
+### micro-product-service with OAuth2 Service URI and Client Credentials
