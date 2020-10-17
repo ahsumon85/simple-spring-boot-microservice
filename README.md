@@ -411,3 +411,14 @@ eureka.instance.preferIpAddress=true
 eureka.client.register-with-eureka=true
 eureka.client.fetch-registry=true
 ```
+
+### Test Product service Service
+
+Now that both the services are up and running, let’s test the `getAllProducts` form product service method by passing the earlier access token obtained for user john in the header as shown below. Here `48b3ea3c-36c5-4359-accb-35086a3e8ede` is the `access_token` for **admin.
+
+Here john belongs to INVENTORY_VIEW and hence he can view the cars.
+
+HTTP GET Request
+
+curl --request GET http://localhost:9090/product/find \
+     --header "Authorization:Bearer 48b3ea3c-36c5-4359-accb-35086a3e8ede"
