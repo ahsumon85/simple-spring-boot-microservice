@@ -418,8 +418,8 @@ Now that both the services are up and running, let’s test the `getAllProducts`
 
 Here john belongs to INVENTORY_VIEW and hence he can view the cars.
 
-**HTTP GET Request
+***HTTP GET Request
 ```
 curl --request GET http://localhost:8180/product-api/product/find \
      --header "Authorization:Bearer 48b3ea3c-36c5-4359-accb-35086a3e8ede"
-``
+```
