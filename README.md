@@ -393,3 +393,7 @@ public class ProductApplicationRunner {
 ```
 
 ### micro-product-service with OAuth2 Service URI and Client Credentials
+
+* Update `micro-product-service` with client credentials for appclient and the `/oauth/check_token` URL of OAuth2 Authorization Server.
+* Here the client appclient is authorized to access `micro-product-service`. We had configured this in `oauth_client_details` table.
+* Update the server port to run on `8082`.
