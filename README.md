@@ -391,9 +391,23 @@ public class ProductApplicationRunner {
 
 }
 ```
-
-### micro-product-service with OAuth2 Service URI and Client Credentials
+***`micro-product-service with` OAuth2 Service URI and Client Credentials
 
 * Update `micro-product-service` with client credentials for appclient and the `/oauth/check_token` URL of OAuth2 Authorization Server.
 * Here the client appclient is authorized to access `micro-product-service`. We had configured this in `oauth_client_details` table.
+* Here configure eith eureka registry servervice `http://localhost:8761/eureka/`
 * Update the server port to run on `8082`.
+
+`src/main/resources/application.properties`
+```
+#oauth2 configuration
+security.oauth2.resource.token-info-uri=http://localhost:9191/auth-api/oauth/check_token
+security.oauth2.client.client-id=mobile
+security.oauth2.client.client-secret=pin
+
+#eureka server url
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+eureka.instance.preferIpAddress=true
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+```
