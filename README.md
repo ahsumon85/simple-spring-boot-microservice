@@ -414,7 +414,7 @@ eureka.client.fetch-registry=true
 
 ### Test Product service Service
 
-Now that both the services are up and running, let’s test the `getAllProducts` form product service method by passing the earlier access token obtained for user john in the header as shown below. Here `48b3ea3c-36c5-4359-accb-35086a3e8ede` is the `access_token` for **admin.
+Now that both the services are up and running, let’s test the `getAllProducts` form product service method by passing the earlier access token obtained for user `admin` in the header as shown below. Here `48b3ea3c-36c5-4359-accb-35086a3e8ede` is the `access_token` for `admin`.
 
 Here john belongs to `PRODUCT_VIEW` and hence he can view the products.
 
