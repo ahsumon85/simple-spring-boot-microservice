@@ -208,14 +208,17 @@ I have used `CodeachesBCryptPasswordEncoder.java` available [here](https://githu
 INSERT INTO oauth_client_details (client_id, client_secret, web_server_redirect_uri, scope, access_token_validity, refresh_token_validity, resource_ids, authorized_grant_types, additional_information) 
 VALUES ('mobile', '{bcrypt}$2a$10$gPhlXZfms0EpNHX0.HHptOhoFD1AoxSr/yUIdTqA8vtjeP4zi0DDu', 'http://localhost:8080/code', 'READ,WRITE', '3600', '10000', 'inventory,payment', 'authorization_code,password,refresh_token,implicit', '{}');
 
+/*client_id - client_secret*/
+/* mobile - pin* /
+
+
  INSERT INTO PERMISSION (NAME) VALUES
  ('create_profile'),
  ('read_profile'),
  ('update_profile'),
  ('delete_profile');
 
- INSERT INTO role (NAME) VALUES
-		('ROLE_admin'),('ROLE_editor'),('ROLE_operator');
+ INSERT INTO role (NAME) VALUES ('ROLE_admin'),('ROLE_editor'),('ROLE_operator');
 
  INSERT INTO PERMISSION_ROLE (PERMISSION_ID, ROLE_ID) VALUES
      (1,1), /*create-> admin */
@@ -231,7 +234,7 @@ VALUES ('mobile', '{bcrypt}$2a$10$gPhlXZfms0EpNHX0.HHptOhoFD1AoxSr/yUIdTqA8vtjeP
  insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('2', 'ahasan', '{bcrypt}$2a$12$DGs/1IptlFg0szj.3PttmeC8swHZs/pZ6YEKng4Cl1l2woMtkNhvi','habibsumoncse2@gmail.com', '1', '1', '1', '1');
  insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('3', 'user', '{bcrypt}$2a$12$udISUXbLy9ng5wuFsrCMPeQIYzaKtAEXNJqzeprSuaty86N4m6emW','habibsumoncse2@gmail.com', '1', '1', '1', '1');
  /*
- passowrds:
+ username - passowrds:
  admin - admin
  ahasan - ahasan
  user - user
