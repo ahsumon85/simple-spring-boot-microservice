@@ -306,7 +306,7 @@ public class AuthorizationServerConfiguration implements AuthorizationServerConf
     }
 }
 ```
-*** Configure User Security Authentication ***
+***Configure User Security Authentication***
 Let’s create a class `UserSecurityConfig.java` to handle user authentication.
 
 * **PasswordEncoder** implements PasswordEncoder that uses the BCrypt strong hashing function. Clients can optionally supply a “strength” (a.k.a. log rounds in BCrypt) and a SecureRandom instance. The larger the strength parameter the more work will have to be done (exponentially) to hash the passwords. The value used in this example is 4 for user’s password.
