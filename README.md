@@ -427,3 +427,38 @@ curl --request GET http://localhost:8180/product-api/product/find \
      --header "Authorization:Bearer 48b3ea3c-36c5-4359-accb-35086a3e8ede"
 ```
 # Zuul API Gateway
+
+***Enable Zuul Service Proxy***
+Now add the `@EnableZuulProxy` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a Zuul service proxy and will enable all the features of a API gateway layer as described before. We will then add some filters and route configurations.
+```
+@SpringBootApplication
+@EnableZuulProxy
+@EnableEurekaClient
+public class ZuulApiGetWayRunner {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ZuulApiGetWayRunner.class, args);
+		System.out.println("Zuul server is running...");
+	}
+
+	@Bean
+	public PreFilter preFilter() {
+		return new PreFilter();
+	}
+
+	@Bean
+	public PostFilter postFilter() {
+		return new PostFilter();
+	}
+
+	@Bean
+	public ErrorFilter errorFilter() {
+		return new ErrorFilter();
+	}
+
+	@Bean
+	public RouteFilter routeFilter() {
+		return new RouteFilter();
+	}
+}
+```
