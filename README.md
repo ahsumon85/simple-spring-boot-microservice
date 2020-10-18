@@ -523,5 +523,4 @@ zuul.ribbon-isolation-strategy=thread
 
 #each route uses a separate thread pool
 zuul.thread-pool.use-separate-thread-pools=true
-
 ```
