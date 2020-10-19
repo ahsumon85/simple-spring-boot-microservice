@@ -33,6 +33,11 @@ public class SalesService {
 		SalesEntity salesEntity = copySalesDtoToEntity(salesDTO);
 		salesRepo.save(salesEntity);
 	}
+	
+	public void updateSales(SalesDTO salesDTO) {
+		SalesEntity salesEntity = copySalesDtoToEntity(salesDTO);
+		salesRepo.save(salesEntity);
+	}
 
 	public void deleteSales(Long usrId) {
 		salesRepo.deleteById(usrId);
