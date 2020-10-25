@@ -1,7 +1,6 @@
 ## Spring Boot, Spring Cloud Oauth2, Spring Cloud Netflix Eureka, Spring CLoud Zuul, Hystrix Monitoring Dashboard, Spring Data JPA, MySQL
 
 
-
 # Overview
 
 The architecture is composed by five services:
