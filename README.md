@@ -1,6 +1,5 @@
 ## Spring Boot, Spring Cloud Oauth2, Spring Cloud Netflix Eureka, Spring CLoud Zuul, Hystrix Monitoring Dashboard, Spring Data JPA, MySQL
 
-///![11](https://user-images.githubusercontent.com/31319842/97098540-3423a480-16a8-11eb-9276-c1c2de429ac5.png)
 
 
 # Overview
