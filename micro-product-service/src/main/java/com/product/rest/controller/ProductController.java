@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.product.rest.common.AccessTokenProvider;
 import com.product.rest.dto.ProductDTO;
 import com.product.rest.dto.SalesDTO;
 import com.product.rest.service.ProductService;
@@ -43,7 +42,7 @@ public class ProductController {
 		ProductDTO list = new ProductDTO();
 		SalesDTO salesDTO = new SalesDTO();
 		try {
-			String url = "http://sales-server/sales-api/sales/find/name/by-id?id=" + id + "&access_token=" + AccessTokenProvider.provideToken();
+			String url = "http://sales-server/sales-api/sales/find/name/by-id?id=" + id;
 			ResponseEntity<SalesDTO> response = restTemplate.getForEntity(url, SalesDTO.class);
 			salesDTO = response.getBody();
 		} catch (Exception e) {
