@@ -88,8 +88,7 @@ Here `admin` belongs to `PRODUCT_VIEW` and hence he can view the products.
 
 ### HTTP GET Request
 ```
-curl --request GET http://localhost:8180/product-api/product/find \
-     --header "Authorization:Bearer 48b3ea3c-36c5-4359-accb-35086a3e8ede"
+curl --request GET http://localhost:8180/product-api/product/find
 ```
 # Zuul API Gateway
 
