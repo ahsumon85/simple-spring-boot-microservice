@@ -6,18 +6,17 @@
 package com.product.rest.common.messages;
 
 public class BaseResponse {
-	
+
 	private String message;
 
-	private int code;
-
-	public BaseResponse(String message, int code) {
-		this.message = message;
-		this.code = code;
-	}
+	private int status;
 
 	BaseResponse() {
+	}
 
+	public BaseResponse(String message, int status) {
+		this.message = message;
+		this.status = status;
 	}
 
 	public String getMessage() {
@@ -28,12 +27,12 @@ public class BaseResponse {
 		this.message = message;
 	}
 
-	public int getCode() {
-		return code;
+	public int getStatus() {
+		return status;
 	}
 
-	public void setCode(int code) {
-		this.code = code;
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 }

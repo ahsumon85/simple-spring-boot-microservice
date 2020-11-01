@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.product.rest.common.messages.BaseResponse;
 import com.product.rest.dto.ProductDTO;
 import com.product.rest.dto.SalesDTO;
 import com.product.rest.service.ProductService;
@@ -56,9 +57,9 @@ public class ProductController {
 	}
 
 	@PostMapping(value = { "/add", "/update" })
-	public ResponseEntity<String> createOrUpdateProduct(@Valid @RequestBody ProductDTO productDTO) {
-		productService.createOrUpdateProduct(productDTO);
-		return new ResponseEntity<>("Data Insert sucessfully", HttpStatus.OK);
+	public ResponseEntity<BaseResponse> createOrUpdateProduct(@Valid @RequestBody ProductDTO productDTO) {
+		BaseResponse response =  productService.createOrUpdateProduct(productDTO);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/delete/{id}")
