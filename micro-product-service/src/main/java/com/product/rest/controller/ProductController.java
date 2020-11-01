@@ -58,14 +58,14 @@ public class ProductController {
 
 	@PostMapping(value = { "/add", "/update" })
 	public ResponseEntity<BaseResponse> createOrUpdateProduct(@Valid @RequestBody ProductDTO productDTO) {
-		BaseResponse response =  productService.createOrUpdateProduct(productDTO);
+		BaseResponse response = productService.createOrUpdateProduct(productDTO);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/delete/{id}")
-	public ResponseEntity<String> deleteProductById(@PathVariable("id") Long id) {
-		productService.deleteProduct(id);
-		return new ResponseEntity<>("Data Delete sucessfully", HttpStatus.OK);
+	public ResponseEntity<BaseResponse> deleteProductById(@PathVariable("id") Long id) {
+		BaseResponse response = productService.deleteProduct(id);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 }
