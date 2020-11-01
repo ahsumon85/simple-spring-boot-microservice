@@ -7,9 +7,11 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
 import com.product.rest.common.exceptions.RecordNotFoundException;
+import com.product.rest.common.messages.BaseResponse;
+import com.product.rest.common.messages.CustomMessage;
 import com.product.rest.dto.ProductDTO;
 import com.product.rest.entity.ProductEntity;
 import com.product.rest.repo.ProductRepo;
@@ -31,9 +33,10 @@ public class ProductService {
 		return copyProductEntityToDto(productEntity);
 	}
 
-	public void createOrUpdateProduct(ProductDTO productDTO) {
+	public BaseResponse createOrUpdateProduct(ProductDTO productDTO) {
 		ProductEntity productEntity = copyProductDtoToEntity(productDTO);
 		productRepo.save(productEntity);
+		return new BaseResponse(CustomMessage.SAVE_SUCCESS_MESSAGE, HttpStatus.CREATED.value());
 	}
 
 	public void deleteProduct(Long prodId) {
