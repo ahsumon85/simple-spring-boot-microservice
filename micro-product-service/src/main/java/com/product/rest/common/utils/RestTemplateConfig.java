@@ -1,4 +1,4 @@
-package com.product.rest.common;
+package com.product.rest.common.utils;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

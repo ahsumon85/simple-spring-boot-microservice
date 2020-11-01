@@ -27,7 +27,7 @@ public class ProductService {
 
 	public ProductDTO findByProductId(Long productId) {
 		ProductEntity productEntity = productRepo.findById(productId)
-				.orElseThrow(() -> new RecordNotFoundException("product id '" + productId + "' does not exist!"));
+				.orElseThrow(() -> new RecordNotFoundException("product id '" + productId + "' does not exist !"));
 		return copyProductEntityToDto(productEntity);
 	}
 
