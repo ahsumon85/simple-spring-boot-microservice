@@ -3,6 +3,8 @@ package com.product.rest.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,7 @@ import com.product.rest.entity.ProductEntity;
 import com.product.rest.repo.ProductRepo;
 
 @Service
-//@Transactional
+@Transactional
 public class ProductService {
 
 	@Autowired
