@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.product.rest.common.exceptions.RecordNotFoundException;
 import com.product.rest.dto.ProductDTO;
 import com.product.rest.entity.ProductEntity;
 import com.product.rest.repo.ProductRepo;
@@ -24,8 +25,9 @@ public class ProductService {
 		return productRepo.findAll().stream().map(this::copyProductEntityToDto).collect(Collectors.toList());
 	}
 
-	public ProductDTO findByProductId(Long pId) {
-		ProductEntity productEntity = productRepo.findByProductId(pId);
+	public ProductDTO findByProductId(Long productId) {
+		ProductEntity productEntity = productRepo.findById(productId)
+				.orElseThrow(() -> new RecordNotFoundException("product id '" + productId + "' does not exist!"));
 		return copyProductEntityToDto(productEntity);
 	}
 
@@ -34,8 +36,12 @@ public class ProductService {
 		productRepo.save(productEntity);
 	}
 
-	public void deleteProduct(Long empId) {
-		productRepo.deleteById(empId);
+	public void deleteProduct(Long prodId) {
+		if (productRepo.existsById(prodId)) {
+			productRepo.deleteById(prodId);
+		} else {
+			throw new RecordNotFoundException("No record found for given id: " + prodId);
+		}
 	}
 
 	private ProductDTO copyProductEntityToDto(ProductEntity productEntity) {
