@@ -15,7 +15,7 @@ The architecture is composed by five services:
 
 Eureka Server is an application that holds the information about all client-service applications. Every Micro service will register into the Eureka server and Eureka server knows all the client applications running on each port and IP address. Eureka Server is also known as Discovery Server.
 
-** Implementing a Eureka Server for service registry is as easy as:
+***Implementing a Eureka Server for service registry is as easy as
 
 we need to add `@EnableEurekaServer` annotation. The `@EnableEurekaServer` annotation is used to make your Spring Boot application acts as a Eureka Server.
 
