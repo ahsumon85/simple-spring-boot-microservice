@@ -84,7 +84,7 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 #
 ### micro-product-service
 
-Now we will see  `micro-product-service` as a resource service 
+Now we will see `micro-product-service` as a resource service 
 
 ### HTTP GET Request
 ```
