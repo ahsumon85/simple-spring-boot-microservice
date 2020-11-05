@@ -1,8 +1,8 @@
-## Spring Boot, Spring Cloud Netflix Eureka, Spring CLoud Zuul, Spring Data JPA, MySQL
+## Spring Boot, Spring Cloud Netflix Eureka, Spring CLoud Zuul, Spring Data JPA, MySQL.
+![spring-cloud-routing-with-zuul-gateway-0](https://user-images.githubusercontent.com/31319842/98207878-8ac19600-1f66-11eb-82a4-f294e0f0125e.png)
 
 
 # Overview
-
 The architecture is composed by five services:
 
    * `micro-eureka-server`: Service **Discovery Server** created with Eureka
