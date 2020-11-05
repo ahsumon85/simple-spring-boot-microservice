@@ -128,7 +128,7 @@ public class ZuulApiGetWayRunner {
 ***Zuul routes configuration***
 Open application.properties and add below entries-
 ```
-#Will start the gateway server @8080
+#Will start the gateway server @8180
 server.port=8180
 spring.application.name=zuul-server
 
@@ -180,7 +180,7 @@ For Maven, use the command as shown below −
 or
 
 **Project import in sts4 IDE** 
-```File >import >maven >Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
+```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
 
 ### Run project 
 
@@ -193,4 +193,4 @@ Now, run the JAR file by using the following command −
  
  `click right button on the project >Run As >Spring Boot App`
  
-After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` instance
+After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` instance gate will be run on `http://localhost:8180` port
