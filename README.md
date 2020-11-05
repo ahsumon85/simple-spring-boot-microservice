@@ -193,4 +193,4 @@ Now, run the JAR file by using the following command −
  
  `click right button on the project >Run As >Spring Boot App`
  
-After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see zuul instance
+After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` instance
