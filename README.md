@@ -88,13 +88,13 @@ Now we will see `micro-product-service` as a resource service. The `micro-produc
 
 Add the following dependencies:
 
-**Web:** Spring MVC and embedded Tomcat
-**Actuator:** features to help you monitor and manage your application
-**EurekaDiscovery:** for service registration
-**JPA:** to save/retrieve data
-**MySQL:** to use store data on database
-**RestRepositories:** to expose JPA repositories as REST endpoints
-**hibernate validator:** to used exception handling and show error messages
+* **Web:** Spring MVC and embedded Tomcat
+* **Actuator:** features to help you monitor and manage your application
+* **EurekaDiscovery:** for service registration
+* **JPA:** to save/retrieve data
+* **MySQL:** to use store data on database
+* **RestRepositories:** to expose JPA repositories as REST endpoints
+* **hibernate validator:** to used exception handling and show error messages
 
 ### HTTP GET Request
 ```
