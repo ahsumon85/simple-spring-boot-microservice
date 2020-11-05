@@ -80,10 +80,11 @@ Now, run the JAR file by using the following command −
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 
+
+#
 ### micro-product-service
 
-Now that both the services are up and running, let’s test the `getAllProducts` form product service method.
-Here `admin` belongs to `PRODUCT_VIEW` and hence he can view the products.
+Now we will see  `micro-product-service` as a resource service 
 
 ### HTTP GET Request
 ```
