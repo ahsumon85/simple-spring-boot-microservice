@@ -54,7 +54,7 @@ eureka.client.register-with-eureka=false
 eureka.client.fetch-registry=false
 ```
 
-## How to run?
+## How to run eureka service?
 
 ### Build Project
 Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
