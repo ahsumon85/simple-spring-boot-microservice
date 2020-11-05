@@ -84,7 +84,17 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 #
 ### micro-product-service
 
-Now we will see `micro-product-service` as a resource service 
+Now we will see `micro-product-service` as a resource service. The `micro-product-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of products when the application loads using an `ProdServiceRunner` bean.
+
+Add the following dependencies:
+
+**Web:** Spring MVC and embedded Tomcat
+**Actuator:** features to help you monitor and manage your application
+**EurekaDiscovery:** for service registration
+**JPA:** to save/retrieve data
+**MySQL:** to use store data on database
+**RestRepositories:** to expose JPA repositories as REST endpoints
+**hibernate validator:** to used exception handling and show error messages
 
 ### HTTP GET Request
 ```
