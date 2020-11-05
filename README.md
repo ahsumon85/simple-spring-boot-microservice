@@ -80,7 +80,7 @@ Now, run the JAR file by using the following command −
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 
-### Test Product service Service
+### micro-product-service
 
 Now that both the services are up and running, let’s test the `getAllProducts` form product service method.
 Here `admin` belongs to `PRODUCT_VIEW` and hence he can view the products.
@@ -89,7 +89,7 @@ Here `admin` belongs to `PRODUCT_VIEW` and hence he can view the products.
 ```
 curl --request GET http://localhost:8180/product-api/product/find
 ```
-#3
+##
 # Zuul API Gateway
 
 ***Enable Zuul Service Proxy***
