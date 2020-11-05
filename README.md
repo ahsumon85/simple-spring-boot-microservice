@@ -6,12 +6,18 @@
 The architecture is composed by five services:
 
    * `micro-eureka-server`: Service **Discovery Server** created with Eureka
-   * `micro-product-service`: Simple REST service created with `Spring Boot, Spring Cloud Oauth2, Spring Data JPA, MySQL` to use as an **resource service**
-   * `micro-sales-service`: Simple REST service created with `Spring Boot, Spring Cloud Oauth2, Spring Data JPA, MySQL` to use as an **resource service**
+   * `micro-product-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
+   * `micro-sales-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * `micro-api-getway`: API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
- 
+
+### ools you will need
+* Maven 3.0+ is your build tool
+* Your favorite IDE but we will recommend `STS-4-4.4.1 version`. We use STS.
+* JDK 1.8+
+
+
 ##
-# micro-eureka-service
+# Eureka Service
 
 Eureka Server is an application that holds the information about all client-service applications. Every Micro service will register into the Eureka server and Eureka server knows all the client applications running on each port and IP address. Eureka Server is also known as Discovery Server.
 
@@ -80,9 +86,8 @@ Now, run the JAR file by using the following command −
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 
-
-#
-### micro-product-service
+##
+# Product Service
 
 Now we will see `micro-product-service` as a resource service. The `micro-product-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of products when the application loads using an `ProdServiceRunner` bean.
 
@@ -96,12 +101,42 @@ Add the following dependencies:
 * **RestRepositories:** to expose JPA repositories as REST endpoints
 * **hibernate validator:** to used exception handling and show error messages
 
+***Configure Application Name, Database Information and a few other configuration in properties file***
+```
+server.port=8280
+spring.application.name=product-server
+server.servlet.context-path=/product-api
+
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/product_service?useSSL=false&createDatabaseIfNotExist=true
+spring.datasource.username=[username]
+spring.datasource.password=[password]
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.database-platform=org.hibernate.dialect.MySQL57Dialect
+spring.jpa.generate-ddl=true
+spring.jpa.show-sql=true
+
+#eureka server url
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+eureka.instance.preferIpAddress=true
+eureka.instance.lease-expiration-duration-in-seconds=1
+eureka.instance.lease-renewal-interval-in-seconds=2
+
+
+
+```
+***Enable Zuul Service Proxy***
+Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
+
 ### HTTP GET Request
 ```
 curl --request GET http://localhost:8180/product-api/product/find
 ```
 ##
-# Zuul API Gateway
+# API Gateway Service
 
 ***Enable Zuul Service Proxy***
 Now add the `@EnableZuulProxy` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a Zuul service proxy and will enable all the features of a API gateway layer as described before. We will then add some filters and route configurations.
