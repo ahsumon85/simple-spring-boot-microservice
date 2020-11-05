@@ -64,7 +64,7 @@ For Maven, use the command as shown below −
 or
 
 **Project import in sts4 IDE** 
-```File >import >maven >Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
+```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
 
 ### Run project 
 
@@ -188,7 +188,7 @@ zuul.ribbon-isolation-strategy=thread
 zuul.thread-pool.use-separate-thread-pools=true
 ```
 
-## How to run?
+## How to run API Gateway Service?
 
 ### Build Project
 Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
