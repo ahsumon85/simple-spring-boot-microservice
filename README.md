@@ -89,6 +89,7 @@ Here `admin` belongs to `PRODUCT_VIEW` and hence he can view the products.
 ```
 curl --request GET http://localhost:8180/product-api/product/find
 ```
+#3
 # Zuul API Gateway
 
 ***Enable Zuul Service Proxy***
