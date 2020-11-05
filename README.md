@@ -132,7 +132,6 @@ Open application.properties and add below entries-
 server.port=8180
 spring.application.name=zuul-server
 
-#eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka/
 eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
 eureka.instance.preferIpAddress=true
 
@@ -143,16 +142,8 @@ eureka.instance.preferIpAddress=true
 # They should be only accessed through the path defined below.
 zuul.ignored-services=*
 
-
-
-zuul.routes.third.id=auth-server
 zuul.routes.secound.id=sales-server
 zuul.routes.first.id=product-server
-
-#Disable Spring Boot basic authentication
-security.basic.enabled=false
-security.user.password=none
-
 
 # Map paths to employee service
 zuul.routes.product-server.path=/product-api/**
@@ -163,15 +154,6 @@ zuul.routes.product-server.stripPrefix=false
 zuul.routes.sales-server.path=/sales-api/**
 zuul.routes.sales-server.serviceId=sales-server
 zuul.routes.sales-server.stripPrefix=false
-
-# Map paths to user service
-zuul.routes.auth-server.path=/auth-api/**
-zuul.routes.auth-server.serviceId=auth-server
-zuul.routes.auth-server.stripPrefix=false
-
-#zuul.routes.first.url=employee-service
-#zuul.routes.second.url=user-server
-
 
 eureka.instance.lease-expiration-duration-in-seconds=1
 eureka.instance.lease-renewal-interval-in-seconds=2
