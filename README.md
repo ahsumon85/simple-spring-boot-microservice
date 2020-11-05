@@ -10,7 +10,7 @@ The architecture is composed by five services:
    * `micro-sales-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * `micro-api-getway`: API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
 
-### ools you will need
+### tools you will need
 * Maven 3.0+ is your build tool
 * Your favorite IDE but we will recommend `STS-4-4.4.1 version`. We use STS.
 * JDK 1.8+
@@ -129,10 +129,14 @@ eureka.instance.lease-renewal-interval-in-seconds=2
 ***Enable Zuul Registry Service in product service***
 Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
 
+After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `product-server` instance gate will be run on `http://localhost:8280` port
+
 ### HTTP GET Request
 ```
 curl --request GET http://localhost:8180/product-api/product/find
 ```
+**On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to import on postman then we will ses all API information**
+
 ##
 # API Gateway Service
 
