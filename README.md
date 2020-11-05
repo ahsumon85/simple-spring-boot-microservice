@@ -89,17 +89,17 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 ##
 # Product Service
 
-Now we will see `micro-product-service` as a resource service. The `micro-product-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of products when the application loads using an `ProdServiceRunner` bean.
+Now we will see `micro-product-service` as a resource service. The `micro-product-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of products when the application loads using an `ProductApplicationRunner` bean.
 
 Add the following dependencies:
 
 * **Web:** Spring MVC and embedded Tomcat
 * **Actuator:** features to help you monitor and manage your application
-* **EurekaDiscovery:** for service registration
+* **EurekaClient:** for service registration
 * **JPA:** to save/retrieve data
 * **MySQL:** to use store data on database
 * **RestRepositories:** to expose JPA repositories as REST endpoints
-* **hibernate validator:** to used exception handling and show error messages
+* **hibernate validator:** to use runtime exception handling and return error messages
 
 ***Configure Application Name, Database Information and a few other configuration in properties file***
 ```
@@ -126,16 +126,96 @@ eureka.instance.lease-expiration-duration-in-seconds=1
 eureka.instance.lease-renewal-interval-in-seconds=2
 ```
 
-***Enable Zuul Registry Service in product service***
+***Enable Eureka Registry Service on product service***
 Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
+
+## How to run product service?
+
+### Build Project
+Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
+For Maven, use the command as shown below −
+
+**Project import in sts4 IDE** 
+```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
+
+### Run project 
+
+After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
+Now, run the JAR file by using the following command −
+
+ `java –jar <JARFILE> `
+ Run on sts IDE
+ `click right button on the project >Run As >Spring Boot App`
+ 
+Eureka Discovery-Service URL: `http://localhost:8761`
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `product-server` instance gate will be run on `http://localhost:8280` port
 
-### HTTP GET Request
+### Test HTTP GET Request on resource service
 ```
 curl --request GET http://localhost:8180/product-api/product/find
 ```
-**On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to import on postman then we will ses all API information**
+here `[http://localhost:8180/product-api/product/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `product-api` are context path of prodcut service  and `/product/find` is method URL.
+
+### For getting All API Information
+On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
+
+
+##
+# Sales Service
+
+Now we will see `micro-sales-service` as a resource service. The `micro-sales-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of products when the application loads using an `SalesApplicationRunner` bean.
+
+Add the following dependencies:
+
+* **Web:** Spring MVC and embedded Tomcat
+* **Actuator:** features to help you monitor and manage your application
+* **EurekaClient:** for service registration
+* **JPA:** to save/retrieve data
+* **MySQL:** to use store data on database
+* **RestRepositories:** to expose JPA repositories as REST endpoints
+* **hibernate validator:** to use runtime exception handling and return error messages
+
+***Configure Application info, Database info and a few other configuration in properties file***
+```
+server.port=8380
+spring.application.name=sales-server
+server.servlet.context-path=/sales-api
+
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/sales_service?useSSL=false&createDatabaseIfNotExist=true
+spring.datasource.username=admin
+spring.datasource.password=Ati@2020
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.database-platform=org.hibernate.dialect.MySQL57Dialect
+spring.jpa.generate-ddl=true
+spring.jpa.show-sql=true
+
+
+#eureka server url
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+eureka.instance.preferIpAddress=true
+eureka.instance.lease-expiration-duration-in-seconds=1
+eureka.instance.lease-renewal-interval-in-seconds=2
+```
+
+***Enable Eureka Registry Service on product service***
+Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
+
+After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8380` port
+
+### Test HTTP GET Request on resource service
+```
+curl --request GET http://localhost:8180/sales-api/sales/find
+```
+here `[http://localhost:8180/sales-api/sales/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `sales-api` are application context path of sales service and `/sales/find` is method URL.
+
+### For getting All API Information
+On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
+
 
 ##
 # API Gateway Service
@@ -181,15 +261,11 @@ Open application.properties and add below entries-
 server.port=8180
 spring.application.name=zuul-server
 
-eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
-eureka.instance.preferIpAddress=true
-
-# A prefix that can added to beginning of all requests. 
-#zuul.prefix=/api
 
 # Disable accessing services using service name (i.e. user-service).
 # They should be only accessed through the path defined below.
 zuul.ignored-services=*
+
 
 zuul.routes.secound.id=sales-server
 zuul.routes.first.id=product-server
@@ -204,19 +280,16 @@ zuul.routes.sales-server.path=/sales-api/**
 zuul.routes.sales-server.serviceId=sales-server
 zuul.routes.sales-server.stripPrefix=false
 
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+eureka.instance.preferIpAddress=true
 eureka.instance.lease-expiration-duration-in-seconds=1
 eureka.instance.lease-renewal-interval-in-seconds=2
-#eureka.client.healthcheck.enabled=true
-#logging.level.zuul.api.getway=DEBUG
-
-
-#Set the Hystrix isolation policy to the thread pool
-zuul.ribbon-isolation-strategy=thread
 
 
 
-#each route uses a separate thread pool
-zuul.thread-pool.use-separate-thread-pools=true
+ribbon.eager-load.enabled= true
+ribbon.ConnectTimeout= 30000
+ribbon.ReadTimeout= 30000
 ```
 
 ## How to run API Gateway Service?
