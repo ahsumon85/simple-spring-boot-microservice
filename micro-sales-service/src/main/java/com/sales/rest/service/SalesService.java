@@ -7,8 +7,13 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.sales.rest.common.exceptions.RecordNotFoundException;
+import com.sales.rest.common.messages.BaseResponse;
+import com.sales.rest.common.messages.CustomMessage;
+import com.sales.rest.common.utils.Topic;
 import com.sales.rest.dto.SalesDTO;
 import com.sales.rest.entity.SalesEntity;
 import com.sales.rest.repo.SalesRepo;
@@ -24,24 +29,33 @@ public class SalesService {
 		return salesRepo.findAll().stream().map(this::copySalesEntityToDto).collect(Collectors.toList());
 	}
 
-	public SalesDTO findBySalesId(Long userId) {
-		SalesEntity userEntity = salesRepo.findBySaleId(userId);
+	public SalesDTO findBySalesId(Long salesId) {
+		SalesEntity userEntity = salesRepo.findById(salesId)
+				.orElseThrow(() -> new RecordNotFoundException("Sales id '" + salesId + "' does not exist !"));
 		return copySalesEntityToDto(userEntity);
 	}
 
-	public void createOrUpdateSales(SalesDTO salesDTO) {
+	public BaseResponse createOrUpdateSales(SalesDTO salesDTO) {
 		SalesEntity salesEntity = copySalesDtoToEntity(salesDTO);
 		salesRepo.save(salesEntity);
+		return new BaseResponse(Topic.Sales.getName() + CustomMessage.SAVE_SUCCESS_MESSAGE, HttpStatus.CREATED.value());
+
 	}
-	
+
 	public void updateSales(SalesDTO salesDTO) {
 		SalesEntity salesEntity = copySalesDtoToEntity(salesDTO);
 		salesRepo.save(salesEntity);
 	}
 
-	public void deleteSales(Long usrId) {
-		salesRepo.deleteById(usrId);
+	public BaseResponse deleteSales(Long salesId) {
+		if (salesRepo.existsById(salesId)) {
+			salesRepo.deleteById(salesId);
+		} else {
+			throw new RecordNotFoundException("No record found for given id: " + salesId);
+		}
+		return new BaseResponse(Topic.Sales.getName() + CustomMessage.DELETE_SUCCESS_MESSAGE, HttpStatus.OK.value());
 	}
+
 
 	private SalesDTO copySalesEntityToDto(SalesEntity salesEntity) {
 		SalesDTO salesDTO = new SalesDTO();

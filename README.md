@@ -192,7 +192,6 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQL57Dialect
 spring.jpa.generate-ddl=true
 spring.jpa.show-sql=true
 
-
 #eureka server url
 eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
 eureka.client.register-with-eureka=true
@@ -266,7 +265,6 @@ spring.application.name=zuul-server
 # They should be only accessed through the path defined below.
 zuul.ignored-services=*
 
-
 zuul.routes.secound.id=sales-server
 zuul.routes.first.id=product-server
 
@@ -284,8 +282,6 @@ eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
 eureka.instance.preferIpAddress=true
 eureka.instance.lease-expiration-duration-in-seconds=1
 eureka.instance.lease-renewal-interval-in-seconds=2
-
-
 
 ribbon.eager-load.enabled= true
 ribbon.ConnectTimeout= 30000
