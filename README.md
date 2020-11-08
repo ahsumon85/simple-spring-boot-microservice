@@ -314,4 +314,4 @@ Now, run the JAR file by using the following command −
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` instance gate will be run on `http://localhost:8180` port
 
 
-[Security in microservice](https://github.com/habibsumoncse/simple-spring-boot-microservice/)
+[Security in microservice](https://github.com/habibsumoncse/secure-spring-boot-microservice)
