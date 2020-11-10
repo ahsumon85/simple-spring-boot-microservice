@@ -313,3 +313,10 @@ Now, run the JAR file by using the following command −
  `click right button on the project >Run As >Spring Boot App`
  
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` instance gate will be run on `http://localhost:8180` port
+
+#
+### Spring Security Oauth2 in Microservice
+#
+***Below we will see how to configure oauth2 in microservice, please click the link***
+
+[Secure microservice architecture](https://github.com/habibsumoncse/secure-spring-boot-microservice)
