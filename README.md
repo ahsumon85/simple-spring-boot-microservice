@@ -13,6 +13,7 @@ The architecture is composed by five services:
 ### tools you will need
 * Maven 3.0+ is your build tool
 * Your favorite IDE but we will recommend `STS-4-4.4.1 version`. We use STS.
+* MySQL Server
 * JDK 1.8+
 
 
