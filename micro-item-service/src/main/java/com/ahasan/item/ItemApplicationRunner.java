@@ -7,10 +7,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class ProductApplicationRunner {
+public class ItemApplicationRunner {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProductApplicationRunner.class, args);
+		SpringApplication.run(ItemApplicationRunner.class, args);
 		System.out.println("Product service ruuning....!");
 	}
 
