@@ -127,7 +127,7 @@ eureka.instance.lease-expiration-duration-in-seconds=1
 eureka.instance.lease-renewal-interval-in-seconds=2
 ```
 
-***Enable Eureka Registry Service on product service***
+***Enable Eureka Registry Service on item service***
 Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
 
 ## How to run product service?
@@ -150,13 +150,13 @@ Now, run the JAR file by using the following command −
  
 Eureka Discovery-Service URL: `http://localhost:8761`
 
-After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `product-server` instance gate will be run on `http://localhost:8280` port
+After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `item-service` instance gate will be run on `http://localhost:8280` port
 
 ### Test HTTP GET Request on resource service
 ```
-curl --request GET http://localhost:8180/product-api/product/find
+curl --request GET http://localhost:8180/product-api/item/find
 ```
-here `[http://localhost:8180/product-api/product/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `product-api` are context path of prodcut service  and `/product/find` is method URL.
+here `[http://localhost:8180/product-api/item/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `item-api` are context path of prodcut service  and `/item/find` is method URL.
 
 ### For getting All API Information
 On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
@@ -185,8 +185,8 @@ server.servlet.context-path=/sales-api
 
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost:3306/sales_service?useSSL=false&createDatabaseIfNotExist=true
-spring.datasource.username=admin
-spring.datasource.password=Ati@2020
+spring.datasource.username=[usrename]
+spring.datasource.password=[password]
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.database-platform=org.hibernate.dialect.MySQL57Dialect
