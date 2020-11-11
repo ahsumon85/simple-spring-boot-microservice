@@ -130,7 +130,7 @@ eureka.instance.lease-renewal-interval-in-seconds=2
 ***Enable Eureka Registry Service on item service***
 Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
 
-## How to run product service?
+## How to run item service?
 
 ### Build Project
 Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
@@ -154,9 +154,9 @@ After sucessfully run we can refresh Eureka Discovery-Service URL: `http://local
 
 ### Test HTTP GET Request on resource service
 ```
-curl --request GET http://localhost:8180/product-api/item/find
+curl --request GET http://localhost:8180/item-api/item/find
 ```
-here `[http://localhost:8180/product-api/item/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `item-api` are context path of prodcut service  and `/item/find` is method URL.
+here `[http://localhost:8180/item-api/item/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `item-api` are context path of prodcut service  and `/item/find` is method URL.
 
 ### For getting All API Information
 On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
