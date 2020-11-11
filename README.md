@@ -100,16 +100,16 @@ Add the following dependencies:
 * **JPA:** to save/retrieve data
 * **MySQL:** to use store data on database
 * **RestRepositories:** to expose JPA repositories as REST endpoints
-* **hibernate validator:** to use runtime exception handling and return error messages
+* **Hibernate validator:** to use runtime exception handling and return error messages
 
 ***Configure Application Name, Database Information and a few other configuration in properties file***
 ```
 server.port=8280
-spring.application.name=product-server
-server.servlet.context-path=/product-api
+spring.application.name=item-server
+server.servlet.context-path=/item-api
 
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.datasource.url=jdbc:mysql://localhost:3306/product_service?useSSL=false&createDatabaseIfNotExist=true
+spring.datasource.url=jdbc:mysql://localhost:3306/item_service?useSSL=false&createDatabaseIfNotExist=true
 spring.datasource.username=[username]
 spring.datasource.password=[password]
 
@@ -156,7 +156,7 @@ After sucessfully run we can refresh Eureka Discovery-Service URL: `http://local
 ```
 curl --request GET http://localhost:8180/item-api/item/find
 ```
-here `[http://localhost:8180/item-api/item/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `item-api` are context path of prodcut service  and `/item/find` is method URL.
+here `[http://localhost:8180/item-api/item/find]` on the `http` means protocol, `localhost` for hostaddress `8180` are gateway service port because every api will be transmit by the gateway service, `item-api` are context path of item service  and `/item/find` is method URL.
 
 ### For getting All API Information
 On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
@@ -175,7 +175,7 @@ Add the following dependencies:
 * **JPA:** to save/retrieve data
 * **MySQL:** to use store data on database
 * **RestRepositories:** to expose JPA repositories as REST endpoints
-* **hibernate validator:** to use runtime exception handling and return error messages
+* **Hibernate validator:** to use runtime exception handling and return error messages
 
 ***Configure Application info, Database info and a few other configuration in properties file***
 ```
@@ -207,7 +207,7 @@ Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spr
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8380` port
 
-### Test HTTP GET Request on resource service
+### Test HTTP GET Request on sales service
 ```
 curl --request GET http://localhost:8180/sales-api/sales/find
 ```
@@ -266,13 +266,11 @@ spring.application.name=zuul-server
 # They should be only accessed through the path defined below.
 zuul.ignored-services=*
 
-zuul.routes.secound.id=sales-server
-zuul.routes.first.id=product-server
 
-# Map paths to employee service
-zuul.routes.product-server.path=/product-api/**
-zuul.routes.product-server.serviceId=product-server
-zuul.routes.product-server.stripPrefix=false
+# Map paths to item service
+zuul.routes.item-server.path=/item-api/**
+zuul.routes.item-server.serviceId=item-server
+zuul.routes.item-server.stripPrefix=false
 
 # Map paths to sales service
 zuul.routes.sales-server.path=/sales-api/**
