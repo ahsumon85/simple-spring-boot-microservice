@@ -317,4 +317,4 @@ After sucessfully run we can refresh Eureka Discovery-Service URL: `http://local
 #
 ***Below we will see how to configure oauth2 in microservice***
 
-***To follow link*** [Secure microservice architecture](https://github.com/habibsumoncse/secure-spring-boot-microservice)
+***To follow link***  [secure-spring-boot-microservice](https://github.com/habibsumoncse/secure-spring-boot-microservice)
