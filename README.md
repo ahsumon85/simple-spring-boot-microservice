@@ -5,10 +5,10 @@
 # Overview
 The architecture is composed by five services:
 
-   * `micro-eureka-server`: Service **Discovery Server** created with Eureka
-   * `micro-product-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
+   * `micro-eureka-service`: Service **Discovery Server** created with Eureka
+   * `micro-item-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * `micro-sales-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
-   * `micro-api-getway`: API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
+   * `micro-gateway-service`: API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
 
 ### tools you will need
 * Maven 3.0+ is your build tool
@@ -90,7 +90,7 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 ##
 # Item Service
 
-Now we will see `micro-item-service` as a resource service. The `micro-item-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of items when the application loads using an `ProductApplicationRunner` bean.
+Now we will see `micro-item-service` as a resource service. The `micro-item-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of items when the application loads using an `ItemApplicationRunner` bean.
 
 Add the following dependencies:
 
