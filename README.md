@@ -202,7 +202,7 @@ eureka.instance.lease-expiration-duration-in-seconds=1
 eureka.instance.lease-renewal-interval-in-seconds=2
 ```
 
-***Enable Eureka Registry Service on product service***
+***Enable Eureka Registry Service on sales service***
 Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8380` port
