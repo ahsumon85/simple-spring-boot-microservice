@@ -25,7 +25,7 @@ import com.ahasan.item.service.ProductService;
 
 @Validated
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/item")
 public class ProductController {
 
 	@Autowired
