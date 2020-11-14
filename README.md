@@ -89,6 +89,103 @@ Now, run the JAR file by using the following command −
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 
+
+##
+# API Gateway Service
+
+***Enable Zuul Service Proxy***
+Now add the `@EnableZuulProxy` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a Zuul service proxy and will enable all the features of a API gateway layer as described before. We will then add some filters and route configurations.
+```
+@SpringBootApplication
+@EnableZuulProxy
+@EnableEurekaClient
+public class ZuulApiGetWayRunner {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ZuulApiGetWayRunner.class, args);
+		System.out.println("Zuul server is running...");
+	}
+
+	@Bean
+	public PreFilter preFilter() {
+		return new PreFilter();
+	}
+
+	@Bean
+	public PostFilter postFilter() {
+		return new PostFilter();
+	}
+
+	@Bean
+	public ErrorFilter errorFilter() {
+		return new ErrorFilter();
+	}
+
+	@Bean
+	public RouteFilter routeFilter() {
+		return new RouteFilter();
+	}
+}
+```
+***Zuul routes configuration***
+Open application.properties and add below entries-
+```
+#Will start the gateway server @8180
+server.port=8180
+spring.application.name=zuul-server
+
+
+# Disable accessing services using service name (i.e. user-service).
+# They should be only accessed through the path defined below.
+zuul.ignored-services=*
+
+
+# Map paths to item service
+zuul.routes.item-server.path=/item-api/**
+zuul.routes.item-server.serviceId=item-server
+zuul.routes.item-server.stripPrefix=false
+
+# Map paths to sales service
+zuul.routes.sales-server.path=/sales-api/**
+zuul.routes.sales-server.serviceId=sales-server
+zuul.routes.sales-server.stripPrefix=false
+
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
+eureka.instance.preferIpAddress=true
+eureka.instance.lease-expiration-duration-in-seconds=1
+eureka.instance.lease-renewal-interval-in-seconds=2
+
+ribbon.eager-load.enabled= true
+ribbon.ConnectTimeout= 30000
+ribbon.ReadTimeout= 30000
+```
+
+## How to run API Gateway Service?
+
+### Build Project
+Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
+For Maven, use the command as shown below −
+
+`mvn clean install`
+or
+
+**Project import in sts4 IDE** 
+```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
+
+### Run project 
+
+After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
+Now, run the JAR file by using the following command −
+
+ `java –jar <JARFILE> `
+
+ Run on sts IDE
+ 
+ `click right button on the project >Run As >Spring Boot App`
+ 
+After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` instance gate will be run on `http://localhost:8180` port
+
+
 ##
 # Item Service
 
@@ -195,7 +292,7 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQL57Dialect
 spring.jpa.generate-ddl=true
 spring.jpa.show-sql=true
 
-#eureka server url
+#eureka server url configuration
 eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
 eureka.client.register-with-eureka=true
 eureka.client.fetch-registry=true
@@ -218,101 +315,6 @@ here `[http://localhost:8180/sales-api/sales/find]` on the `http` means protocol
 ### For getting All API Information
 On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
 
-
-##
-# API Gateway Service
-
-***Enable Zuul Service Proxy***
-Now add the `@EnableZuulProxy` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a Zuul service proxy and will enable all the features of a API gateway layer as described before. We will then add some filters and route configurations.
-```
-@SpringBootApplication
-@EnableZuulProxy
-@EnableEurekaClient
-public class ZuulApiGetWayRunner {
-
-	public static void main(String[] args) {
-		SpringApplication.run(ZuulApiGetWayRunner.class, args);
-		System.out.println("Zuul server is running...");
-	}
-
-	@Bean
-	public PreFilter preFilter() {
-		return new PreFilter();
-	}
-
-	@Bean
-	public PostFilter postFilter() {
-		return new PostFilter();
-	}
-
-	@Bean
-	public ErrorFilter errorFilter() {
-		return new ErrorFilter();
-	}
-
-	@Bean
-	public RouteFilter routeFilter() {
-		return new RouteFilter();
-	}
-}
-```
-***Zuul routes configuration***
-Open application.properties and add below entries-
-```
-#Will start the gateway server @8180
-server.port=8180
-spring.application.name=zuul-server
-
-
-# Disable accessing services using service name (i.e. user-service).
-# They should be only accessed through the path defined below.
-zuul.ignored-services=*
-
-
-# Map paths to item service
-zuul.routes.item-server.path=/item-api/**
-zuul.routes.item-server.serviceId=item-server
-zuul.routes.item-server.stripPrefix=false
-
-# Map paths to sales service
-zuul.routes.sales-server.path=/sales-api/**
-zuul.routes.sales-server.serviceId=sales-server
-zuul.routes.sales-server.stripPrefix=false
-
-eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
-eureka.instance.preferIpAddress=true
-eureka.instance.lease-expiration-duration-in-seconds=1
-eureka.instance.lease-renewal-interval-in-seconds=2
-
-ribbon.eager-load.enabled= true
-ribbon.ConnectTimeout= 30000
-ribbon.ReadTimeout= 30000
-```
-
-## How to run API Gateway Service?
-
-### Build Project
-Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
-For Maven, use the command as shown below −
-
-`mvn clean install`
-or
-
-**Project import in sts4 IDE** 
-```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
-
-### Run project 
-
-After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
-Now, run the JAR file by using the following command −
-
- `java –jar <JARFILE> `
-
- Run on sts IDE
- 
- `click right button on the project >Run As >Spring Boot App`
- 
-After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` instance gate will be run on `http://localhost:8180` port
 
 #
 ### Spring Security Oauth2 in Microservice
