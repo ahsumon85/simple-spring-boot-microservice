@@ -9,39 +9,29 @@
 			"name": "product-service",
 			"item": [
 				{
-					"name": "Find Product List",
+					"name": "find by item id",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8180/product-api/product/find",
-							"host": [
-								"localhost"
-							],
-							"port": "8180",
-							"path": [
-								"product-api",
-								"product",
-								"find"
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "e2a98572-5dcf-4410-be76-1c114f182f77",
+									"type": "string"
+								}
 							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "find by product id",
-					"request": {
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8180/product-api/product/find/by-id?id=1",
+							"raw": "localhost:8180/item-api/item/find/by-id?id=1",
 							"host": [
 								"localhost"
 							],
 							"port": "8180",
 							"path": [
-								"product-api",
-								"product",
+								"item-api",
+								"item",
 								"find",
 								"by-id"
 							],
@@ -56,19 +46,29 @@
 					"response": []
 				},
 				{
-					"name": "find product list",
+					"name": "find item list",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "e2a98572-5dcf-4410-be76-1c114f182f77",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8180/product-api/product/find",
+							"raw": "localhost:8180/item-api/item/find",
 							"host": [
 								"localhost"
 							],
 							"port": "8180",
 							"path": [
-								"product-api",
-								"product",
+								"item-api",
+								"item",
 								"find"
 							]
 						}
@@ -76,7 +76,7 @@
 					"response": []
 				},
 				{
-					"name": "Product add",
+					"name": "Item add",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -91,14 +91,14 @@
 							"raw": "{\n    \"productName\": \"shart\",\n    \"productSize\": \"M\"\n}"
 						},
 						"url": {
-							"raw": "localhost:8180/product-api/product/add",
+							"raw": "localhost:8180/item-api/item/add",
 							"host": [
 								"localhost"
 							],
 							"port": "8180",
 							"path": [
-								"product-api",
-								"product",
+								"item-api",
+								"item",
 								"add"
 							]
 						}
@@ -106,21 +106,21 @@
 					"response": []
 				},
 				{
-					"name": "Delete Product",
+					"name": "Delete Item",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8180/product-api/product/delete/2",
+							"raw": "localhost:8180/item-api/item/delete/6",
 							"host": [
 								"localhost"
 							],
 							"port": "8180",
 							"path": [
-								"product-api",
-								"product",
+								"item-api",
+								"item",
 								"delete",
-								"2"
+								"6"
 							]
 						}
 					},
@@ -131,7 +131,126 @@
 		},
 		{
 			"name": "sales-service",
-			"item": [],
+			"item": [
+				{
+					"name": "Find Sales List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "e2a98572-5dcf-4410-be76-1c114f182f77",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/sales-api/sales/find",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"sales-api",
+								"sales",
+								"find"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sales add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productName\": \"shart\",\n    \"price\": \"150\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8180/sales-api/sales/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"sales-api",
+								"sales",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by sales id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "e2a98572-5dcf-4410-be76-1c114f182f77",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/sales-api/sales/find/by-id?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"sales-api",
+								"sales",
+								"find",
+								"by-id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Sales",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8180/sales-api/sales/delete/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"sales-api",
+								"sales",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"protocolProfileBehavior": {}
 		}
 	],
