@@ -88,7 +88,7 @@ Now, run the JAR file by using the following command −
  
 Eureka Discovery-Service URL: `http://localhost:8761`
 
-
+![Screenshot from 2020-11-14 09-39-39](https://user-images.githubusercontent.com/31319842/99139113-3bfbb680-2660-11eb-8800-9efc093c5b38.png)
 
 ##
 # API Gateway Service
