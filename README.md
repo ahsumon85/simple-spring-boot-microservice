@@ -134,11 +134,9 @@ Open application.properties and add below entries-
 server.port=8180
 spring.application.name=zuul-server
 
-
 # Disable accessing services using service name (i.e. user-service).
 # They should be only accessed through the path defined below.
 zuul.ignored-services=*
-
 
 # Map paths to item service
 zuul.routes.item-server.path=/item-api/**
