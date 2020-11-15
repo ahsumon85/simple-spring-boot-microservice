@@ -50,6 +50,7 @@ The code for Maven user dependency is shown below −
 
 By default, the Eureka Server registers itself into the discovery. You should add the below given configuration into your `application.properties` file or `application.yml` file.
 
+```
 # Give a name to the eureka server
 spring.application.name=eureka-server
 
