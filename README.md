@@ -37,10 +37,11 @@ public class EurekaServerRunner {
 		System.out.println("Eureka Server Started....!!");
 	}
 }
-
+```
 
 Make sure Spring cloud Eureka server dependency is added in your build configuration file.
 The code for Maven user dependency is shown below −
+
 ```
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
