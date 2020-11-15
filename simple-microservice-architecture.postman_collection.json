@@ -6,20 +6,13 @@
 	},
 	"item": [
 		{
-			"name": "product-service",
+			"name": "item-service",
 			"item": [
 				{
 					"name": "find by item id",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "e2a98572-5dcf-4410-be76-1c114f182f77",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -49,14 +42,7 @@
 					"name": "find item list",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "e2a98572-5dcf-4410-be76-1c114f182f77",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -136,14 +122,7 @@
 					"name": "Find Sales List",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "e2a98572-5dcf-4410-be76-1c114f182f77",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
@@ -196,14 +175,7 @@
 					"name": "Find by sales id",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "e2a98572-5dcf-4410-be76-1c114f182f77",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
