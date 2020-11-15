@@ -37,7 +37,7 @@ public class EurekaServerRunner {
 		System.out.println("Eureka Server Started....!!");
 	}
 }
-```***To follow link***  [secure-spring-boot-microservice](https://github.com/habibsumoncse/secure-spring-boot-microservice)
+
 
 Make sure Spring cloud Eureka server dependency is added in your build configuration file.
 The code for Maven user dependency is shown below −
@@ -50,7 +50,6 @@ The code for Maven user dependency is shown below −
 
 By default, the Eureka Server registers itself into the discovery. You should add the below given configuration into your `application.properties` file or `application.yml` file.
 
-```
 # Give a name to the eureka server
 spring.application.name=eureka-server
 
