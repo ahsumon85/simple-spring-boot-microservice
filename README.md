@@ -5,7 +5,7 @@
 # Overview
 The architecture is composed by four services:
 
-   * `micro-eureka-service`: Service **Discovery Server** created with Eureka
+   * `micro-eureka-service`: Service **Discovery Server** created with [Eureka](https://github.com/habibsumoncse/simple-spring-boot-microservice#eureka-service)
    * `micro-item-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * `micro-sales-service`: Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * `micro-gateway-service`: API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
