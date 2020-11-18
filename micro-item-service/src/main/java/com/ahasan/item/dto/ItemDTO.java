@@ -1,6 +1,6 @@
 package com.ahasan.item.dto;
 
-public class ProductDTO {
+public class ItemDTO {
 
 	private Long productId;
 

@@ -202,6 +202,7 @@ Add the following dependencies:
 * **RestRepositories:** to expose JPA repositories as REST endpoints
 * **Hibernate validator:** to use runtime exception handling and return error messages
 
+
 ***Configure Application Name, Database Information and a few other configuration in properties file***
 ```
 server.port=8280
