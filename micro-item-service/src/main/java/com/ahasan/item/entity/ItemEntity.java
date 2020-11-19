@@ -9,44 +9,44 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "product")
+@Table(name = "item")
 public class ItemEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "product_id")
-	private Long productId;
+	@Column(name = "item_id")
+	private Long itemId;
 
-	@Size(max = 10, min = 1,  message = "product name field must be equal or less than {max}")
+	@Size(max = 10, min = 1, message = "product name field must be equal or less than {max}")
 	@Column(name = "product_name")
-	private String productName;
+	private String itemName;
 
-	@Size(max = 5, min = 1,  message = "product size field must be equal or less than {max}")
+	@Size(max = 5, min = 1, message = "product size field must be equal or less than {max}")
 	@Column(name = "product_size")
-	private String productSize;
+	private String itemtSize;
 
-	public Long getProductId() {
-		return productId;
+	public Long getItemId() {
+		return itemId;
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
 	}
 
-	public String getProductName() {
-		return productName;
+	public String getItemName() {
+		return itemName;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 
-	public String getProductSize() {
-		return productSize;
+	public String getItemtSize() {
+		return itemtSize;
 	}
 
-	public void setProductSize(String productSize) {
-		this.productSize = productSize;
+	public void setItemtSize(String itemtSize) {
+		this.itemtSize = itemtSize;
 	}
 
 }
