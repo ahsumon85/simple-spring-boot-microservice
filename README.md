@@ -10,7 +10,7 @@ The architecture is composed by four services:
    * [`micro-sales-service`](https://github.com/habibsumoncse/simple-spring-boot-microservice#sales-service): Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * [`micro-gateway-service`](https://github.com/habibsumoncse/simple-spring-boot-microservice#api-gateway-service): API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
    
-`Follow the link to see Oauth2 in microservice architecture`  [secure-spring-boot-microservice](https://github.com/habibsumoncse/secure-spring-boot-microservice)
+`Follow the link to see Oauth2 in microservice architecture  [secure-spring-boot-microservice]`(https://github.com/habibsumoncse/secure-spring-boot-microservice)
 
 ### tools you will need
 * Maven 3.0+ is your build tool
