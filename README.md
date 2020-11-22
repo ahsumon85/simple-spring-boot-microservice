@@ -317,9 +317,10 @@ here `[http://localhost:8180/sales-api/sales/find]` on the `http` means protocol
 ### For getting All API Information
 On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
 
+After we seen start sales, item, zuul instance then we can try `secure-microservice-architecture.postman_collection.json` imported API from postman with token
 
 #
-### Spring Security Oauth2 in Microservice
+# Spring Security Oauth2 in Microservice
 #
 ***Below we will see how to configure oauth2 in microservice***
 
