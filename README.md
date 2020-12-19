@@ -130,7 +130,7 @@ public class ZuulApiGetWayRunner {
 	}
 }
 ```
-***Zuul routes configuration***
+**Zuul routes configuration**
 Open application.properties and add below entries-
 ```
 #Will start the gateway server @8180
@@ -202,8 +202,8 @@ Add the following dependencies:
 * **RestRepositories:** to expose JPA repositories as REST endpoints
 * **Hibernate validator:** to use runtime exception handling and return error messages
 
+**Configure Application Name, Database Information and a few other configuration in properties file**
 
-***Configure Application Name, Database Information and a few other configuration in properties file***
 ```
 server.port=8280
 spring.application.name=item-server
@@ -228,7 +228,7 @@ eureka.instance.lease-expiration-duration-in-seconds=1
 eureka.instance.lease-renewal-interval-in-seconds=2
 ```
 
-***Enable Eureka Registry Service on item service***
+**Enable Eureka Registry Service on item service**
 Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
 
 ## How to run item service?
@@ -278,7 +278,8 @@ Add the following dependencies:
 * **RestRepositories:** to expose JPA repositories as REST endpoints
 * **Hibernate validator:** to use runtime exception handling and return error messages
 
-***Configure Application info, Database info and a few other configuration in properties file***
+**Configure Application info, Database info and a few other configuration in properties file**
+
 ```
 server.port=8380
 spring.application.name=sales-server
@@ -303,7 +304,7 @@ eureka.instance.lease-expiration-duration-in-seconds=1
 eureka.instance.lease-renewal-interval-in-seconds=2
 ```
 
-***Enable Eureka Registry Service on sales service***
+**Enable Eureka Registry Service on sales service**
 Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8380` port
