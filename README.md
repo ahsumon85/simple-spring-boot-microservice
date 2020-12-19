@@ -9,7 +9,7 @@ The architecture is composed by four services:
    * [`micro-item-service`](https://github.com/habibsumoncse/simple-spring-boot-microservice#item-service): Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * [`micro-sales-service`](https://github.com/habibsumoncse/simple-spring-boot-microservice#sales-service): Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
    * [`micro-gateway-service`](https://github.com/habibsumoncse/simple-spring-boot-microservice#api-gateway-service): API Gateway created with Zuul that uses the discovery-service to send the requests to the services. It uses Ribbon as a Load Balancer
-   
+
 `Follow the link to see Oauth2 in microservice architecture`[`secure-spring-boot-microservice`](https://github.com/habibsumoncse/secure-spring-boot-microservice)
 
 ### tools you will need
@@ -84,9 +84,9 @@ Now, run the JAR file by using the following command −
  `java –jar <JARFILE> `
 
  Run on sts IDE
- 
+
  `click right button on the project >Run As >Spring Boot App`
- 
+
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 ![Screenshot from 2020-11-14 09-39-39](https://user-images.githubusercontent.com/31319842/99139113-3bfbb680-2660-11eb-8800-9efc093c5b38.png)
@@ -181,9 +181,9 @@ Now, run the JAR file by using the following command −
  `java –jar <JARFILE> `
 
  Run on sts IDE
- 
+
  `click right button on the project >Run As >Spring Boot App`
- 
+
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` instance gate will be run on `http://localhost:8180` port
 
 
@@ -248,7 +248,7 @@ Now, run the JAR file by using the following command −
  `java –jar <JARFILE> `
  Run on sts IDE
  `click right button on the project >Run As >Spring Boot App`
- 
+
 Eureka Discovery-Service URL: `http://localhost:8761`
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `item-service` instance gate will be run on `http://localhost:8280` port
@@ -317,13 +317,13 @@ here `[http://localhost:8180/sales-api/sales/find]` on the `http` means protocol
 ### For getting All API Information
 On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
 ```
-After we seen start sales, item, zuul instance then we can try 
+After we seen start sales, item, zuul instance then we can try for getting information
 `secure-microservice-architecture.postman_collection.json` imported API from postman with token
 ```
 
-#
-# Spring Security Oauth2 in Microservice
-#
-***Below we will see how to configure oauth2 in microservice***
 
-***To follow link***  [secure-spring-boot-microservice](https://github.com/habibsumoncse/secure-spring-boot-microservice)
+# Spring Security Oauth2 in Microservice
+
+**Below we will see how to configure oauth2 in microservice**
+
+**To follow link**  [secure-spring-boot-microservice](https://github.com/habibsumoncse/secure-spring-boot-microservice)
