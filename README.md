@@ -14,12 +14,15 @@ The architecture is composed by four services:
 
 ### tools you will need
 * Maven 3.0+ is your build tool
+
 * Your favorite IDE but we will recommend `STS-4-4.4.1 version`. We use STS.
+
 * MySQL Server
+
 * JDK 1.8+
 
+  
 
-##
 # Eureka Service
 
 Eureka Server is an application that holds the information about all client-service applications. Every Micro service will register into the Eureka server and Eureka server knows all the client applications running on each port and IP address. Eureka Server is also known as Discovery Server.
@@ -93,11 +96,26 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 
 
 
-##
 # API Gateway Service
 
-***Enable Zuul Service Proxy***
+A common problem, when building microservices, is to provide a unique gateway to the client applications of your system. The fact that your services are split into small microservices apps that shouldn’t be visible to users otherwise it may result in substantial development/maintenance efforts. Also there are scenarios when whole ecosystem network traffic may be passing through a single point which could impact the performance of the cluster.
+
+### Zuul Components
+
+Zuul has mainly four types of filters that enable us to intercept the traffic in different timeline of the request processing for any particular transaction. We can add any number of filters for a particular url pattern.
+
+- **pre filters** – are invoked before the request is routed.
+- **post filters** – are invoked after the request has been routed.
+- **route filters** – are used to route the request.
+- **error filters** – are invoked when an error occurs while handling the request.
+
+![Zull-filters](https://user-images.githubusercontent.com/31319842/101316221-49364a80-3886-11eb-8037-163dd77554c7.jpg)
+
+
+
+**Enable Zuul Service Proxy**
 Now add the `@EnableZuulProxy` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a Zuul service proxy and will enable all the features of a API gateway layer as described before. We will then add some filters and route configurations.
+
 ```
 @SpringBootApplication
 @EnableZuulProxy
@@ -160,6 +178,157 @@ ribbon.eager-load.enabled= true
 ribbon.ConnectTimeout= 30000
 ribbon.ReadTimeout= 30000
 ```
+
+#### Add Zuul Filters
+
+We will now add few filters as we have already described, Zuul supports 4 types of filters namely `pre`,`post`,`route`, `error` and `CORS` . Here we will create each type of filters.
+
+**pre filter code** – We will add the below pre filter. Currently filters are doing nothing apart from a `println` for testing purpose. But actually those are powerful enough to do many important aspects as mentioned before.
+
+```
+public class PreFilter extends ZuulFilter {
+	@Override
+	public String filterType() {
+		return "pre";
+	}
+	@Override
+	public int filterOrder() {
+		return 1;
+	}
+	@Override
+	public boolean shouldFilter() {
+		return true;
+	}
+	@Override
+	public Object run() {
+		RequestContext ctx = RequestContext.getCurrentContext();
+		HttpServletRequest request = ctx.getRequest();
+		System.out.println(
+				"Request Method : " + request.getMethod() + " Request URL : " + request.getRequestURL().toString());
+
+		if (request.getHeader("Authorization") != null) {
+			ctx.addZuulRequestHeader("Authorization", request.getHeader("Authorization"));
+		}
+		return null;
+	}
+}
+```
+
+**post filter**
+
+```
+public class PostFilter extends ZuulFilter {
+  @Override
+  public String filterType() {
+    return "post";
+  }
+  @Override
+  public int filterOrder() {
+    return 1;
+  }
+  @Override
+  public boolean shouldFilter() {
+    return true;
+  }
+  @Override
+  public Object run() {
+   System.out.println("Inside Response Filter");
+    return null;
+  }
+}
+```
+
+**route filter**
+
+```
+public class RouteFilter extends ZuulFilter {
+  @Override
+  public String filterType() {
+    return "route";
+  }
+  @Override
+  public int filterOrder() {
+    return 1;
+  }
+  @Override
+  public boolean shouldFilter() {
+    return true;
+  }
+  @Override
+  public Object run() {
+   System.out.println("Inside Route Filter");
+    return null;
+  }
+}
+```
+
+**Error filter**
+
+```
+public class ErrorFilter extends ZuulFilter {
+  @Override
+  public String filterType() {
+    return "error";
+  }
+  @Override
+  public int filterOrder() {
+    return 1;
+  }
+  @Override
+  public boolean shouldFilter() {
+    return true;
+  }
+  @Override
+  public Object run() {
+   System.out.println("Inside Route Filter");
+    return null;
+  }
+}
+```
+
+**CORS filter**
+
+```
+
+@Component
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class CORSFilter implements Filter {
+
+  final static Logger logger = LoggerFactory.getLogger(CORSFilter.class);
+
+  @Override
+  public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+      throws IOException, ServletException {
+    HttpServletRequest request = (HttpServletRequest) req;
+
+    HttpServletResponse response = (HttpServletResponse) res;
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Credentials", "true");
+    response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
+    response.setHeader("Access-Control-Max-Age", "3600");
+    response.setHeader("Access-Control-Allow-Headers",
+        "X-Requested-With, Content-Type, Authorization, Origin, Accept, Access-Control-Request-Method, Access-Control-Request-Headers");
+
+    if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+      response.setStatus(HttpServletResponse.SC_OK);
+    } else {
+      chain.doFilter(req, res);
+    }
+  }
+  @Override
+  public void init(FilterConfig filterConfig) {
+    logger.info("Implementation not required");
+  }
+  @Override
+  public void destroy() {
+    logger.info("Implementation not required");
+  }
+}
+
+
+```
+
+
 
 ## How to run API Gateway Service?
 
@@ -327,4 +496,4 @@ After we seen start sales, item, zuul instance then we can try for getting infor
 
 **Below we will see how to configure oauth2 in microservice**
 
-**To follow link**  [secure-spring-boot-microservice](https://github.com/habibsumoncse/secure-spring-boot-microservice)
+**To follow link**  [secure-spring-boot-microservice](https://github.com/habibsumoncse/secure-spring-boot-microservice) 
