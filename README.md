@@ -113,7 +113,8 @@ Zuul has mainly four types of filters that enable us to intercept the traffic in
 
 
 
-**Enable Zuul Service Proxy**
+##### Enable Zuul Service Proxy
+
 Now add the `@EnableZuulProxy` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a Zuul service proxy and will enable all the features of a API gateway layer as described before. We will then add some filters and route configurations.
 
 ```
