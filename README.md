@@ -25,7 +25,7 @@
 
 - First we need to run `eureka service`
 - Second  we need to run `item-servic` and `sales-service`
-- Finally we need to run `gateway-service`
+- Finally we need to run `gateway-service`, if we did run `gateway-service` before running `iteam-service, sales-service` then we have to wait approximately 10 second 
 
 
 
