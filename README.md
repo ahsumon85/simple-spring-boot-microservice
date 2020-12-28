@@ -1,9 +1,9 @@
-## Spring Boot, Spring Cloud Netflix Eureka, Spring CLoud Zuul, Spring Data JPA, MySQL.
+# Spring Boot, Spring Cloud Netflix Eureka, Spring CLoud Zuul, Spring Data JPA, MySQL.
 ![spring-cloud-routing-with-zuul-gateway-0](https://user-images.githubusercontent.com/31319842/98207878-8ac19600-1f66-11eb-82a4-f294e0f0125e.png)
 
 
-# Overview
-The architecture is composed by four services:
+## Overview
+### The architecture is composed by four services:
 
    * [`micro-eureka-service`](https://github.com/habibsumoncse/simple-spring-boot-microservice#eureka-service): Service **Discovery Server** created with Eureka
    * [`micro-item-service`](https://github.com/habibsumoncse/simple-spring-boot-microservice#item-service): Simple REST service created with `Spring Boot, Spring Data JPA, MySQL` to use as a **resource service**
@@ -12,7 +12,7 @@ The architecture is composed by four services:
 
 `Follow the link to see Oauth2 in microservice architecture`[`secure-spring-boot-microservice`](https://github.com/habibsumoncse/secure-spring-boot-microservice)
 
-### tools you will need
+### Tools you will need
 * Maven 3.0+ is your build tool
 
 * Your favorite IDE but we will recommend `STS-4-4.4.1 version`. We use STS.
@@ -21,13 +21,20 @@ The architecture is composed by four services:
 
 * JDK 1.8+
 
-  
+### Microservice Running Process:
 
-# Eureka Service
+- First we need to run `eureka service`
+- Second we need to run `auth-service`
+- Third we need to run `item-servic` and `sales-service`
+- At last we need to run `gateway-service`
+
+
+
+## Eureka Service
 
 Eureka Server is an application that holds the information about all client-service applications. Every Micro service will register into the Eureka server and Eureka server knows all the client applications running on each port and IP address. Eureka Server is also known as Discovery Server.
 
-**Implementing a Eureka Server for service registry is as easy as**
+### Implementing a Eureka Server for service registry is as easy as
 
 we need to add `@EnableEurekaServer` annotation. The `@EnableEurekaServer` annotation is used to make your Spring Boot application acts as a Eureka Server.
 
@@ -67,26 +74,8 @@ eureka.client.register-with-eureka=false
 eureka.client.fetch-registry=false
 ```
 
-## How to run eureka service?
+### How to run eureka service?
 
-### Build Project
-Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
-For Maven, use the command as shown below −
-
-`mvn clean install`
-or
-
-**Project import in sts4 IDE** 
-```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
-
-### Run project 
-
-After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
-Now, run the JAR file by using the following command −
-
- `java –jar <JARFILE> `
-
- Run on sts IDE
 
  `click right button on the project >Run As >Spring Boot App`
 
@@ -96,7 +85,7 @@ Eureka Discovery-Service URL: `http://localhost:8761`
 
 
 
-# API Gateway Service
+## API Gateway Service
 
 A common problem, when building microservices, is to provide a unique gateway to the client applications of your system. The fact that your services are split into small microservices apps that shouldn’t be visible to users otherwise it may result in substantial development/maintenance efforts. Also there are scenarios when whole ecosystem network traffic may be passing through a single point which could impact the performance of the cluster.
 
@@ -113,7 +102,7 @@ Zuul has mainly four types of filters that enable us to intercept the traffic in
 
 
 
-##### Enable Zuul Service Proxy
+### Enable Zuul Service Proxy
 
 Now add the `@EnableZuulProxy` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a Zuul service proxy and will enable all the features of a API gateway layer as described before. We will then add some filters and route configurations.
 
@@ -149,7 +138,7 @@ public class ZuulApiGetWayRunner {
 	}
 }
 ```
-**Zuul routes configuration**
+### Zuul routes configuration
 Open application.properties and add below entries-
 ```
 #Will start the gateway server @8180
@@ -180,7 +169,7 @@ ribbon.ConnectTimeout= 30000
 ribbon.ReadTimeout= 30000
 ```
 
-#### Add Zuul Filters
+### Add Zuul Filters
 
 We will now add few filters as we have already described, Zuul supports 4 types of filters namely `pre`,`post`,`route`, `error` and `CORS` . Here we will create each type of filters.
 
@@ -215,7 +204,7 @@ public class PreFilter extends ZuulFilter {
 }
 ```
 
-**post filter**
+### post filter
 
 ```
 public class PostFilter extends ZuulFilter {
@@ -239,7 +228,7 @@ public class PostFilter extends ZuulFilter {
 }
 ```
 
-**route filter**
+### route filter
 
 ```
 public class RouteFilter extends ZuulFilter {
@@ -263,7 +252,7 @@ public class RouteFilter extends ZuulFilter {
 }
 ```
 
-**Error filter**
+### Error filter
 
 ```
 public class ErrorFilter extends ZuulFilter {
@@ -287,7 +276,7 @@ public class ErrorFilter extends ZuulFilter {
 }
 ```
 
-**CORS filter**
+### CORS filter
 
 ```
 
@@ -331,19 +320,7 @@ public class CORSFilter implements Filter {
 
 
 
-## How to run API Gateway Service?
-
-### Build Project
-Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
-For Maven, use the command as shown below −
-
-`mvn clean install`
-or
-
-**Project import in sts4 IDE** 
-```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
-
-### Run project 
+### How to run API Gateway Service?
 
 After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
 Now, run the JAR file by using the following command −
@@ -357,8 +334,8 @@ Now, run the JAR file by using the following command −
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` instance gate will be run on `http://localhost:8180` port
 
 
-##
-# Item Service
+
+## Item Service
 
 Now we will see `micro-item-service` as a resource service. The `micro-item-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of items when the application loads using an `ItemApplicationRunner` bean.
 
@@ -398,19 +375,10 @@ eureka.instance.lease-expiration-duration-in-seconds=1
 eureka.instance.lease-renewal-interval-in-seconds=2
 ```
 
-**Enable Eureka Registry Service on item service**
+### Enable Eureka Registry Service on item service
 Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
 
-## How to run item service?
-
-### Build Project
-Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
-For Maven, use the command as shown below −
-
-**Project import in sts4 IDE** 
-```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
-
-### Run project 
+### How to run item service?
 
 After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
 Now, run the JAR file by using the following command −
@@ -433,8 +401,8 @@ here `[http://localhost:8180/item-api/item/find]` on the `http` means protocol, 
 On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
 
 
-##
-# Sales Service
+
+## Sales Service
 
 Now we will see `micro-sales-service` as a resource service. The `micro-sales-service` a REST API that lets you CRUD (Create, Read, Update, and Delete) products. It creates a default set of products when the application loads using an `SalesApplicationRunner` bean.
 
@@ -474,7 +442,7 @@ eureka.instance.lease-expiration-duration-in-seconds=1
 eureka.instance.lease-renewal-interval-in-seconds=2
 ```
 
-**Enable Eureka Registry Service on sales service**
+### Enable Eureka Registry Service on sales service
 Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8380` port
@@ -492,8 +460,38 @@ After we seen start sales, item, zuul instance then we can try for getting infor
 `secure-microservice-architecture.postman_collection.json` imported API from postman with token
 ```
 
+## How to run secure microservice?
 
-# Spring Security Oauth2 in Microservice
+### Build Project
+
+Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
+For Maven, use the command as shown below −
+
+`mvn clean install`
+
+or
+
+#### Project import in sts4 IDE
+```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
+
+### Run project 
+
+After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
+Now, run the JAR file by using the following command −
+
+Run on terminal `java –jar <JARFILE> `
+
+ Run on sts IDE
+
+ `click right button on the project >Run As >Spring Boot App`
+
+After successfully run then we will refresh `eureka` and make sure to run `auth`, `item`, `sales` and `gateway`
+
+Eureka Discovery-Service URL: `http://localhost:8761`
+
+
+
+## Spring Security Oauth2 in Microservice
 
 **Below we will see how to configure oauth2 in microservice**
 
