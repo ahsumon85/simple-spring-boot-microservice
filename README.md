@@ -24,9 +24,8 @@
 ### Microservice Running Process:
 
 - First we need to run `eureka service`
-- Second we need to run `auth-service`
-- Third we need to run `item-servic` and `sales-service`
-- At last we need to run `gateway-service`
+- Second  we need to run `item-servic` and `sales-service`
+- Finally we need to run `gateway-service`
 
 
 
