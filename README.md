@@ -80,10 +80,6 @@ eureka.client.fetch-registry=false
 
 Eureka Discovery-Service URL: `http://localhost:8761`
 
-![Screenshot from 2020-11-14 09-39-39](https://user-images.githubusercontent.com/31319842/99139113-3bfbb680-2660-11eb-8800-9efc093c5b38.png)
-
-
-
 ## API Gateway Service
 
 A common problem, when building microservices, is to provide a unique gateway to the client applications of your system. The fact that your services are split into small microservices apps that shouldn’t be visible to users otherwise it may result in substantial development/maintenance efforts. Also there are scenarios when whole ecosystem network traffic may be passing through a single point which could impact the performance of the cluster.
@@ -448,9 +444,11 @@ On this repository we will see `simple-microservice-architecture.postman_collect
 After we seen start sales, item, zuul instance then we can try for getting information
 `secure-microservice-architecture.postman_collection.json` imported API from postman with token
 
-**After successfully run then we will refresh `eureka` dashboard and make sure to run `item`, `sales` and `gateway` on the system**
+**After successfully run then we will refresh `eureka` dashboard and make sure to run `item`, `sales` and `gateway` on the eureka dashboard**
 
-Eureka Discovery-Service URL: `http://localhost:8761`
+Eureka Discovery-Service URL: `http://localhost:8761` 
+
+![Screenshot from 2020-11-14 09-39-39](https://user-images.githubusercontent.com/31319842/99139113-3bfbb680-2660-11eb-8800-9efc093c5b38.png)
 
 
 
