@@ -321,13 +321,6 @@ public class CORSFilter implements Filter {
 
 ### How to run API Gateway Service?
 
-After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
-Now, run the JAR file by using the following command −
-
- `java –jar <JARFILE> `
-
- Run on sts IDE
-
  `click right button on the project >Run As >Spring Boot App`
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `zuul-server` instance gate will be run on `http://localhost:8180` port
@@ -379,14 +372,7 @@ Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spr
 
 ### How to run item service?
 
-After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
-Now, run the JAR file by using the following command −
-
- `java –jar <JARFILE> `
- Run on sts IDE
  `click right button on the project >Run As >Spring Boot App`
-
-Eureka Discovery-Service URL: `http://localhost:8761`
 
 After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `item-service` instance gate will be run on `http://localhost:8280` port
 
@@ -444,7 +430,11 @@ eureka.instance.lease-renewal-interval-in-seconds=2
 ### Enable Eureka Registry Service on sales service
 Now add the `@SpringBootApplication` and `@EnableEurekaClient` annotation on Spring boot application class present in src folder. With this annotation, this artifact will act like a eureka registry service.
 
-After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-server` instance gate will be run on `http://localhost:8380` port
+### How to run sales service?
+
+ `click right button on the project >Run As >Spring Boot App`
+
+After sucessfully run we can refresh Eureka Discovery-Service URL: `http://localhost:8761` will see `sales-service` instance gate will be run on `http://localhost:8380` port
 
 ### Test HTTP GET Request on sales service
 ```
@@ -454,37 +444,11 @@ here `[http://localhost:8180/sales-api/sales/find]` on the `http` means protocol
 
 ### For getting All API Information
 On this repository we will see `simple-microservice-architecture.postman_collection.json` file, this file have to `import` on postman then we will ses all API information for testing api.
-```
+
 After we seen start sales, item, zuul instance then we can try for getting information
 `secure-microservice-architecture.postman_collection.json` imported API from postman with token
-```
 
-## How to run secure microservice?
-
-### Build Project
-
-Now, you can create an executable JAR file, and run the Spring Boot application by using the Maven or Gradle commands shown below −
-For Maven, use the command as shown below −
-
-`mvn clean install`
-
-or
-
-#### Project import in sts4 IDE
-```File > import > maven > Existing maven project > Root Directory-Browse > Select project form root folder > Finish```
-
-### Run project 
-
-After “BUILD SUCCESSFUL”, you can find the JAR file under the build/libs directory.
-Now, run the JAR file by using the following command −
-
-Run on terminal `java –jar <JARFILE> `
-
- Run on sts IDE
-
- `click right button on the project >Run As >Spring Boot App`
-
-After successfully run then we will refresh `eureka` and make sure to run `auth`, `item`, `sales` and `gateway`
+**After successfully run then we will refresh `eureka` dashboard and make sure to run `item`, `sales` and `gateway` on the system**
 
 Eureka Discovery-Service URL: `http://localhost:8761`
 
